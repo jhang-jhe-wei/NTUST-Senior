@@ -45,6 +45,6 @@
 ## 如何貢獻
 歡迎Fork後直接發PR，或是提供新功能想法也可
 
-如有其他問題可以聯絡我的[Faceboot](https://www.facebook.com/profile.php?id=100006651004776)或Email到我的信箱`b10730224@ntust.mail.edu.tw`
+如有其他問題可以聯絡我的[Facebook](https://www.facebook.com/profile.php?id=100006651004776)或Email到我的信箱`b10730224@ntust.mail.edu.tw`
   
   
