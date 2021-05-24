@@ -1,0 +1,26 @@
+<%= raw(Kamiflex.build(self) do
+  bubble do
+    body do
+      horizontal_box do
+        text "🍔", flex: 0, action: message_action("/")
+        text "Todos", weight: "bold", margin: "sm"
+        text "new", align: "end", action: uri_action(liff_path(path: new_todo_path)), color: "#0000ee"
+      end
+      separator
+      if @todos.present?
+        vertical_box margin: "lg" do
+          horizontal_box margin: "lg" do
+            text "Name", weight: "bold"
+            text "action", align: "end"
+          end
+          horizontal_box @todos, margin: "lg" do |todo|
+            text todo.name, action: message_action("GET /todos/#{todo.id}")
+            text "❌", align: "end", action: message_action("DELETE /todos/#{todo.id}")
+          end
+        end
+      else
+        text "沒有目前內容", margin: "lg"
+      end
+    end
+  end
+end )%>

@@ -1,0 +1,25 @@
+<%= raw(Kamiflex.build(self) do
+  bubble do
+    body do
+      horizontal_box do
+        text "🍔", flex: 0, action: message_action("/")
+        text "Show Todo", weight: "bold", margin: "sm"
+        text "edit", align: "end", action: uri_action(liff_path(path: edit_todo_path(@todo) )), color: "#0000ee"
+      end
+      separator
+
+      horizontal_box margin: "md" do
+        vertical_box do
+          text "id", weight: "bold", margin: "xs"
+          text "name", weight: "bold", margin: "xs"
+          text "desc", weight: "bold", margin: "xs"
+        end
+        vertical_box do
+          text @todo.id.blank? ? "-" : @todo.id.to_s, align: "end", margin: "xs"
+          text @todo.name.blank? ? "-" : @todo.name.to_s, align: "end", margin: "xs"
+          text @todo.desc.blank? ? "-" : @todo.desc.to_s, align: "end", margin: "xs"
+        end
+      end
+    end
+  end
+end )%>

@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  host: localhost
+  port: 3306
+  username: root
+  password:
+
+development:
+  <<: *default
+  database: ntust_senior_development
+
+test:
+  <<: *default
+  database: ntust_senior_test
+
+production:
+  <<: *default
+  database: ntust_senior_production
