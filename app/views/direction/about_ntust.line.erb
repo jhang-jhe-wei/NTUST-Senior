@@ -1,0 +1,18 @@
+<%= raw(Kamiflex.build(self) do
+  bubble do
+    body do
+      text "天大地大台科大，你的問題有問必答",size: "xl",wrap: true
+      text "請使用智慧型手機點選訊息下方選項",color: "#cccccc",size: "xs"
+    end
+  end
+  quick_reply do
+    message_action_item("校版")
+    message_action_item("美食")
+    message_action_item("校園地圖")
+    message_action_item("學餐位置")
+    message_action_item("運動場館")
+    message_action_item("影印店")
+    message_action_item("剪髮廳")
+    message_action_item("生活用品")
+  end
+end )%>

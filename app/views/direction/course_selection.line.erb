@@ -1,0 +1,12 @@
+<%= raw(Kamiflex.build(self) do
+  bubble do
+    body do
+      text "選課上遇到什麼問題了？",size: "xl",wrap: true
+      text "請使用智慧型手機點選訊息下方選項",color: "#cccccc",size: "xs"
+    end
+  end
+  quick_reply do
+    message_action_item("加簽")
+    message_action_item("選課流程")
+  end
+end )%>

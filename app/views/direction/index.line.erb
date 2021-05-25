@@ -1,0 +1,17 @@
+<%= raw(Kamiflex.build(self) do
+  bubble do
+    body do
+      text "嗨！請問你有什麼問題呢？",size: "xl",wrap: true
+      text "請使用智慧型手機點選訊息下方選項",color: "#cccccc",size: "xs"
+    end
+  end
+  quick_reply do
+    message_action_item("課務")
+    message_action_item("台科大")
+    message_action_item("全校不分系")
+    message_action_item("社團")
+    message_action_item("獎學金")
+    message_action_item("工讀機會")
+    message_action_item("未來規劃")
+  end
+end) %>

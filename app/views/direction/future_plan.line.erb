@@ -1,0 +1,12 @@
+<%= raw(Kamiflex.build(self) do
+  bubble do
+    body do
+      text "前途一片黑暗？快來問問我吧",size: "xl",wrap: true
+      text "請使用智慧型手機點選訊息下方選項",color: "#cccccc",size: "xs"
+    end
+  end
+  quick_reply do
+    message_action_item("學姊的經歷")
+    message_action_item("開發者的一段話")
+  end
+end )%>
