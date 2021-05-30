@@ -1,6 +1,8 @@
 # NTUST-Senior
 ## 計畫名稱
 台科不分系學姊
+## 官方帳號
+- line id : `@152pnuji`
 ## 計畫內容
 使用line chatbot和line notify幫助新生更容易了解台科大
 ## 建置平台
