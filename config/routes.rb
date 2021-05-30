@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   #全校不分系專區
   get '全校不分系',to: 'direction#about_inter_disciplinary_bachelors_program'
   get '系上活動',to: 'direction#inter_disciplinary_bachelors_program_activity'
-  get '簡介',to: 'direction#inter_disciplinary_bachelors_program_introduction'
+  get '全校不分系簡介',to: 'direction#inter_disciplinary_bachelors_program_introduction'
   #社團專區
   get '社團',to: 'direction#club_list'
   #獎學金專區
