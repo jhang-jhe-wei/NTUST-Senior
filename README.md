@@ -3,6 +3,8 @@
 台科不分系學姊
 ## 官方帳號
 - line id : `@152pnuji`
+
+![image](https://user-images.githubusercontent.com/59594475/120091666-f3a96f00-c13f-11eb-9438-fac61450b06d.png)
 ## 計畫內容
 使用line chatbot和line notify幫助新生更容易了解台科大
 ## 建置平台
