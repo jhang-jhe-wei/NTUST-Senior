@@ -8,12 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: ntust_senior_development
+  database: ntust_senior_chatbot_development
 
 test:
   <<: *default
-  database: ntust_senior_test
+  database: ntust_senior_chatbot_test
 
 production:
   <<: *default
-  database: ntust_senior_production
+  database: ntust_senior_chatbot_production
