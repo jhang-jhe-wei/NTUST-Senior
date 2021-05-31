@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '選課流程',to: 'direction#course_selection_process'
   get '畢業條件',to: 'direction#graduation_requirement'
   get '怎樣畢業',to: 'direction#how_can_graduate'
+  get '共同必修',to: 'direction#common_requirement'
   get '雙主/輔系',to: 'direction#double_major_and_minor'
   get '其他系必修',to: 'direction#other_major_required_course'
   get '導師如何查詢',to: 'direction#search_class_teacher'

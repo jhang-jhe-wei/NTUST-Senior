@@ -20,6 +20,9 @@ class DirectionController < ApplicationController
   def how_can_graduate
   end
 
+  def common_requirement
+  end
+  
   def double_major_and_minor
   end
 
