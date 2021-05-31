@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "direction#index"
+  get "follow", to: "event#follow"
   get "我想請問", to: "direction#index"
   #課務專區
   get '課務',to: 'direction#class_event'
