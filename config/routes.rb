@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '加簽',to: 'direction#add_course'
   get '選課流程',to: 'direction#course_selection_process'
   get '畢業條件',to: 'direction#graduation_requirement'
-  get '怎樣畢業',to: 'direction#how_can_graduate'
+  get '專業選/必修',to: 'direction#major_course'
   get '共同必修',to: 'direction#common_requirement'
   get '雙主/輔系',to: 'direction#double_major_and_minor'
   get '其他系必修',to: 'direction#other_major_required_course'

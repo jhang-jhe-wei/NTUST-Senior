@@ -1,0 +1,15 @@
+<%= raw([(Kamiflex.hash(self) do
+  bubble do
+    body do
+      text "全校不分系選課指南",gravity: "center",size: "xl",align: "center"
+      separator color: "#c2c2c2"
+      text "最簡單的選課方式:",size: "sm",color: "#aaaaaa"
+      text "決定一主修系，修習主修系大一的必修課",wrap: true
+      separator color: "#c2c2c2"
+    end
+    footer do
+      url_button "查詢各系必修課表","https://querycourse.ntust.edu.tw/querycourse/#/ClassSchedule",style: "primary"    
+    end
+  end
+end)
+].to_json)%>
