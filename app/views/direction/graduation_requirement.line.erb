@@ -39,9 +39,15 @@
       end
     end
   end
+end),(Kamiflex.hash(self) do
+  bubble do
+    body do
+      text "想要畢業你得修滿畢業最低學分數，依各系會有不同，大多在133學分上下，而畢業學分數的組成如同上圖(點擊有進一步說明唷)。",size: "sm",wrap: true
+    end
+  end
   quick_reply do
     message_action_item("專業選/必修")
     message_action_item("共同必修")
     message_action_item("自由學分")
   end
-end),({type: "text",text: "想要畢業你得修滿畢業最低學分數，依各系會有不同，大多在133學分上下，而畢業學分數的組成如同上圖(點擊有進一步說明唷)。"})].to_json )%>
+end)].to_json )%>
