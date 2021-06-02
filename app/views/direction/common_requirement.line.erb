@@ -5,8 +5,8 @@
         text "四年制", weight: "bold", color: "#1DB446", size: "sm"
         text "共同必修科目表", weight: "bold", size: "xxl", margin: "md"
         text "109學年（參考）", size: "xs", color: "#aaaaaa", wrap: true
-        separator
         vertical_box margin: "xxl", spacing: "sm" do
+          separator
           horizontal_box do
             text "社會實踐", size: "sm", color: "#555555", flex: 0,wrap: true
             text "1 學分", size: "sm", color: "#111111", align: "end"
@@ -43,6 +43,8 @@
               text "4 學分", size: "sm", color: "#111111", align: "end"
             end
           end
+          text "關於英文課程抵免請查閱台科大官網",color: "#aaaaaa", align: "center",size: "sm"
+
           separator
           horizontal_box do
             text "通識", size: "sm", color: "#555555"
@@ -61,6 +63,13 @@
             end
             vertical_box spacing: "md"do
               text "0 學分", size: "sm", color: "#111111", align: "end"
+            end
+          end
+          separator
+          horizontal_box do
+            text "總計", size: "sm", color: "#555555"
+            vertical_box spacing: "md"do
+              text "34 學分", size: "sm", color: "#111111", align: "end"
             end
           end
         end
