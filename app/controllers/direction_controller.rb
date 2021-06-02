@@ -17,7 +17,10 @@ class DirectionController < ApplicationController
   def graduation_requirement
   end
 
-  def how_can_graduate
+  def major_course
+  end
+  
+  def free_option_course
   end
 
   def common_requirement

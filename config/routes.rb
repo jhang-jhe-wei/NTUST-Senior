@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '畢業條件',to: 'direction#graduation_requirement'
   get '專業選/必修',to: 'direction#major_course'
   get '共同必修',to: 'direction#common_requirement'
+  get '自由選修',to: 'direction#free_option_course'
   get '雙主/輔系',to: 'direction#double_major_and_minor'
   get '其他系必修',to: 'direction#other_major_required_course'
   get '導師如何查詢',to: 'direction#search_class_teacher'

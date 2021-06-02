@@ -1,0 +1,16 @@
+<%= raw([(Kamiflex.hash(self) do
+  bubble do
+    body do
+      text "自由選修指南",gravity: "center",size: "xl",align: "center"
+      separator color: "#c2c2c2"
+      text "推薦的選課方式:",size: "sm",color: "#aaaaaa"
+      text "可以選擇有興趣的通識課程，或是別系的課程增廣見聞，想選什麼課都行",wrap: true
+      separator color: "#c2c2c2"
+    end
+    footer do
+      url_button "查詢選課系統","https://querycourse.ntust.edu.tw/querycourse/#/",style: "primary"  
+        
+    end
+  end
+end)
+].to_json)%>
