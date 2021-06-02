@@ -13,9 +13,9 @@
 }, {
   backgroundColor: "#A17DF5",
   stateColor: "#7D51E4",
-  state: "自由學分",
+  state: "自由選修",
   percentage: "10%",
-  statement: "當修完專業學分和共同必修後，與畢業最低學分數的落差即是自由學分。",
+  statement: "當修完專業學分和共同必修後，與畢業最低學分數的落差即可自由選修。",
 }]%>
 <%= raw([(Kamiflex.hash(self) do
   carousel do
@@ -42,12 +42,14 @@
 end),(Kamiflex.hash(self) do
   bubble do
     body do
-      text "想要畢業你得修滿畢業最低學分數，依各系會有不同，大多在133學分上下，而畢業學分數的組成如同上圖(點擊上圖有進一步說明唷)。剩下詳情請查閱全校不分系官網的畢業條件：http://demoadmin.ntust.edu.tw/var/file/48/1048/img/2570/HONORCOURSE.pdf",size: "sm",wrap: true
+      text "想要畢業你得修滿畢業最低學分數，依各系會有不同，大多在128~135之間，而畢業學分數的組成如同上圖(可點擊)。詳情部分請查閱全校不分系官網上方的學生資訊 - 畢業條件",size: "sm",wrap: true
+      separator color: "#aaaaaa"
+      url_button "全校不分系官網","https://jc.ntust.edu.tw/",style: "primary"    
     end
   end
   quick_reply do
     message_action_item("專業選/必修")
     message_action_item("共同必修")
-    message_action_item("自由學分")
+    message_action_item("自由選修")
   end
 end)].to_json )%>
