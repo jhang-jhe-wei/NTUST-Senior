@@ -1,14 +1,47 @@
-<%= raw(Kamiflex.build(self) do
-  bubble do
-    body do
-      text "能不能畢業全看緣分，您要求什麼緣？",size: "xl",wrap: true
-      text "請使用智慧型手機點選訊息下方選項",color: "#cccccc",size: "xs"
+<%@events = [{
+  backgroundColor: "#27ACB2",
+  stateColor: "#0D8186",
+  state: "專業選/必修",
+  percentage: "65%",
+  statement: "依各系規定，專業選/必修學分大多落在80~90個學分。",
+}, {
+  backgroundColor: "#FF6B6E",
+  stateColor: "#DE5658",
+  state: "共同必修",
+  percentage: "25%",
+  statement: "全校學生的必修，如國文、英文、通識、英文門檻和體育。",
+}, {
+  backgroundColor: "#A17DF5",
+  stateColor: "#7D51E4",
+  state: "自由學分",
+  percentage: "10%",
+  statement: "當修完專業學分和共同必修後，與畢業最低學分數的落差即是自由學分。",
+}]%>
+<%= raw([(Kamiflex.hash(self) do
+  carousel do
+    @events.each do |event|
+      bubble size: "nano",action: message_action(event[:state]) do
+        header backgroundColor: event[:backgroundColor], paddingTop: "19px", paddingAll: "12px", paddingBottom: "16px" do
+          text event[:state], color: "#ffffff", align: "start", size: "md", gravity: "center", wrap: true
+          text event[:percentage], color: "#ffffff", align: "start", size: "xs", gravity: "center", margin: "lg"
+          vertical_box backgroundColor: "#9FD8E36E", height: "6px", margin: "sm" do
+            vertical_box width: event[:percentage], backgroundColor: event[:stateColor], height: "6px" do
+              filler
+            end
+          end
+        end
+        body spacing: "md", paddingAll: "12px" do
+          horizontal_box flex: 1 do
+            text event[:statement], color: "#8C8C8C", size: "sm", wrap: true
+          end
+        end
+        styles footer: { separator: false }
+      end
     end
   end
   quick_reply do
-    #message_action_item("怎樣畢業")
+    message_action_item("專業選/必修")
     message_action_item("共同必修")
-    #message_action_item("雙主/輔系")
-    #message_action_item("其他系必修")
+    message_action_item("自由學分")
   end
-end )%>
+end),({type: "text",text: "想要畢業你得修滿畢業最低學分數，依各系會有不同，大多在133學分上下，而畢業學分數的組成如同上圖(點擊有進一步說明唷)。"})].to_json )%>
