@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "我想請問", to: "direction#index"
   #課務專區
   get '課務',to: 'direction#class_event'
-  get '選課',to: 'direction#course_selection'
+  get '選課規定',to: 'direction#course_rule'
   get '加簽',to: 'direction#add_course'
   get '選課流程',to: 'direction#course_selection_process'
   get '畢業條件',to: 'direction#graduation_requirement'
@@ -13,12 +13,13 @@ Rails.application.routes.draw do
   get '自由選修',to: 'direction#free_option_course'
   get '雙主/輔系',to: 'direction#double_major_and_minor'
   get '其他系必修',to: 'direction#other_major_required_course'
-  get '導師如何查詢',to: 'direction#search_class_teacher'
+  get '我的導師是誰',to: 'direction#search_class_teacher'
   #學校專區
   get '台科大',to: 'direction#about_ntust'
   get '校版',to: 'direction#school_community'
   get '美食',to: 'direction#food_list'
   get '校園地圖',to: 'direction#school_map'
+  get '提款機',to: 'direction#ATM'
   get '學餐位置',to: 'direction#school_restaurant'
   get '運動場館',to: 'direction#playground'
   get '影印店',to: 'direction#copy_shop'

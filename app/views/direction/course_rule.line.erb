@@ -1,0 +1,86 @@
+<%= raw(Kamiflex.hash(self) do
+  carousel do
+    bubble do
+      body do
+        text "開課代碼",align: "center"
+        separator
+        text "為開課系所或開課單位之簡稱，以英文字母表示，計有 2 碼。 【範例】3T:臺大課程、3N:師大課程、ME:機械工程系、GE:人文社會學科。",wrap: true
+        separator color: "#ffffff"
+        horizontal_box do
+          image "https://i.imgur.com/f9L8Qxl.png", action: postback_action("開課代碼全圖")
+          postback_button "點我看全圖", "開課代碼全圖", style: "secondary", margin: "none", gravity: "center"
+        end
+        separator color: "#ffffff"
+        text "※查詢開課代碼:本校首頁→行政單位→教務處→課務組→課程表相關事項→課程系所代碼表。",wrap: true
+      end
+    end
+    bubble do
+      body do
+        text "課程編碼", align: "center"
+        separator
+        text "課程編碼以 4 個數字碼表示，編碼原則如下【課程代碼第 3 碼】", wrap: true
+        image "https://i.imgur.com/sePSRg7.png", action: postback_action("課程編碼全圖"), size: "full", aspectMode: "cover",aspectRatio: "18:3"
+      end
+    end
+    bubble do
+      body do
+        text "課程組別及班別", align: "center"
+        separator
+        text "最後 3 碼，『001』之 0 表全學年必修，01 為流水號;『501』之 5 表全學年 選修，01 為流水號;『301』之 3 表單學期必修，01 為流水號;『701』之 7 表單學期選修，01 為流水號。【範例】CH1605304 化學，表示本課程由化工系開課為單學期之必修程。 【範例】CH165A003 化學(上)，表示本課程由化工系開課為全學年之必修程。", wrap: true
+      end
+    end
+    bubble do
+      body do
+        text "上課時間之星期代碼、節次及教室代碼說明", align: "center"
+        separator
+        text "以 M(一)、T(二)、W(三)、R(四)、F(五)、S(六)、U(日)。【範例】M1:星期一第一節、T2:星期二第二節、R3:星期四第三節。", wrap: true
+        text "節次代碼："
+        image "https://i.imgur.com/hIWQUTh.png", action: postback_action("節次代碼全圖"), size: "full", aspectMode: "cover",aspectRatio: "14:3"
+        text "教室代碼："
+        image "https://i.imgur.com/nnUdbMX.png", action: postback_action("教室代碼全圖"), size: "full", aspectMode: "cover",aspectRatio: "9:4"
+      end
+    end
+    bubble do
+      body do
+        text "選課前資料登錄", align: "center"
+        separator
+        text "請至 本校首頁→學生資訊系統→新學生資訊系統→個人資訊→學籍管理系統，填妥個人相關資料後，方可進行 109 學年度第 1 學期電腦選課，故請儘早完成，避免影響個人權益。",wrap: true
+      end
+    end
+    bubble do
+      body do
+        text "選課操作", align: "center"
+        separator
+        text "本校首頁→選課專區→108 學年度新版選課系統操作手冊",wrap: true
+        text "選課密碼:密碼說明已隨新生資料袋寄給每位新生，課程查詢系統需登入，方可將課程 加入選課系統內「初選登記選課」之待選清單。登入帳號即學號，密碼同學生資訊系統， 若密碼遺失或忘記，可至學生資訊系統登入畫面點選「忘記密碼」的超連結，輸入學號、 身分證號、出生年月日，系統會將您的密碼送至您報名登錄的 Email 帳號及學校發的 Email 帳號中。", wrap: true
+      end
+    end
+    bubble do
+      body do
+        text "選課審核規則", align: "center"
+        separator
+        horizontal_box do
+          text "級別", flex: 4
+          text "上限"
+          text "下限"
+        end
+        horizontal_box do
+          text "大學部一.二.三年級", flex: 4
+          text "25"
+          text "16"
+        end
+        horizontal_box do
+          text "大學部四年級", flex: 4
+          text "25"
+          text "9"
+        end
+        separator
+        text "學生不得修習上課時間互相衝突之科目，否則所修衝突之科目一律註銷。",wrap: true, size: "xs"
+        text "已經修習及格且名稱及學分數均相同之科目或已核准抵免之名稱及學分數均相同之科目，不得重複修習;重複修習之課程，其成績不予採計。",wrap: true, size: "xs"
+        text "四年級(須修滿及格 6 次 0 學分體育課程)體育選修課，每門課 1 學分，一學期不得修習二門課，總計畢業前所採記之體育學分不得超過 2 學分。",wrap: true, size: "xs"
+        text "本校課程初選時:僅可選修開在本班課程(高年級不得選低年級課、研究所不開放大學部選修)。",wrap: true, size: "xs"
+        text "加退選課時:同年制本系高年級可選低年級未額滿之課程;大學部三四年級學生選修研究 所課程，於加退選期間人數上限內，辦理選課。",wrap: true, size: "xs"
+      end
+    end
+  end
+end.to_json )%>

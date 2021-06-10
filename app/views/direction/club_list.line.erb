@@ -1,4 +1,4 @@
-<%= raw(Kamiflex.json(self) do
+<%= raw(Kamiflex.hash(self) do
   bubble do
     body margin: "none" do
       text "鋼琴社",gravity: "center",size: "xl",align: "center"
@@ -23,4 +23,4 @@
       url_button "Website","https://www.facebook.com/NtustPianoClub",style: "primary"
     end
   end
-end)%>
+end.to_json)%>
