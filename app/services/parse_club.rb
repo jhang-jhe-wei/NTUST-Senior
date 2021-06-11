@@ -2,7 +2,7 @@ class ParseClub
 
   def initialize
     Capybara.default_max_wait_time = 1
-    Capybara.default_driver = :selenium_chrome
+    Capybara.default_driver = :selenium_chrome_headless
   end
   
   def perform
