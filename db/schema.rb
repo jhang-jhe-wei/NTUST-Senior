@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_23_141029) do
+ActiveRecord::Schema.define(version: 2021_06_11_024244) do
 
-  create_table "todos", force: :cascade do |t|
+  create_table "clubs", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.string "leader"
+    t.string "teacher"
+    t.text "intro"
+    t.string "url"
+    t.string "updated_date"
+    t.string "category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "todos", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.string "desc"
     t.datetime "created_at", precision: 6, null: false
