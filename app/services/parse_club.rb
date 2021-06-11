@@ -1,4 +1,4 @@
-class ReloadClub
+class ParseClub
 
   def initialize
     Capybara.default_max_wait_time = 1
