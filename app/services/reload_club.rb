@@ -6,10 +6,12 @@ class ReloadClub
 
   def perform
     @b = Capybara.current_session
-    Club.delete_all
+    Category.delete_all
+    colors = ["#FED766", "#FE4A49", "#7AE582", "#25A18E", "#13A3AF", "#00A5CF", "#004E64"]
     get_club_groups.each do |key, values|
+      category = Category.find_by(name: key) || Category.create!(name: key, color: colors[Category.count])
       values.each do |value|
-        load_club(key, value[:club_url])
+        load_club(category, value[:club_url])
       end
     end
     @b.quit
@@ -27,7 +29,7 @@ class ReloadClub
       intro: tds[7].text,
       url: tds[9].text || url,
       updated_date: tds[11].text,
-      category: category,
+      category_id: category.id,
     )
   end
 

@@ -1,13 +1,13 @@
 <%= raw(Kamiflex.hash(self) do
   carousel do
     @categorys.each do |category|
-      bubble size: "nano", action: message_action("#{category[:name]}社團列表") do
-        header backgroundColor: category[:backgroundColor] do
-          text category[:name], color: "#ffffff", align: "center", size: "md", gravity: "center"
+      bubble size: "nano", action: message_action("#{category.name}社團列表") do
+        header backgroundColor: category.color do
+          text category.name, color: "#ffffff", align: "center", size: "md", gravity: "center"
         end
         body spacing: "md", paddingAll: "12px" do
           horizontal_box flex: 1 do
-            text category[:clubs], color: "#2c2c2c", size: "sm", wrap: true, maxLines: 5
+            text category.clubs.first(5).map(&:name).join('、'), color: "#2c2c2c", size: "sm", wrap: true, maxLines: 5
           end
         end
         styles footer: { separator: false }
