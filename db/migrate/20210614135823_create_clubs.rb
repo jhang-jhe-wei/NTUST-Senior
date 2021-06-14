@@ -7,7 +7,7 @@ class CreateClubs < ActiveRecord::Migration[6.1]
       t.text :intro
       t.string :url
       t.string :updated_date
-      t.references :category, null: false
+      t.references :category, null: false, foreign_key: true
 
       t.timestamps
     end

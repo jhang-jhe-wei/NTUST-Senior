@@ -6,7 +6,7 @@ class ReloadClub
 
   def perform
     @b = Capybara.current_session
-    Category.delete_all
+    Category.destroy_all
     colors = ["#FED766", "#FE4A49", "#7AE582", "#25A18E", "#13A3AF", "#00A5CF", "#004E64"]
     get_club_groups.each do |key, values|
       category = Category.find_by(name: key) || Category.create!(name: key, color: colors[Category.count])
