@@ -1,26 +1,17 @@
 <%= raw(Kamiflex.hash(self) do
-  bubble do
-    body margin: "none" do
-      text "鋼琴社",gravity: "center",size: "xl",align: "center"
-      separator color: "#c2c2c2"
-      vertical_box margin: "xxl" do
-              horizontal_box do
-        text "社長姓名", size: "lg", color: "#555555", flex: 0
-        text "楊嘉輝", size: "lg", color: "#111111", align: "end"
+  carousel do
+    @categorys.each do |category|
+      bubble size: "nano", action: message_action("#{category.name}社團列表") do
+        header backgroundColor: category.color do
+          text category.name, color: "#ffffff", align: "center", size: "md", gravity: "center"
+        end
+        body spacing: "md", paddingAll: "12px" do
+          horizontal_box flex: 1 do
+            text category.clubs.first(5).map(&:name).join('、'), color: "#2c2c2c", size: "sm", wrap: true, maxLines: 5
+          end
+        end
+        styles footer: { separator: false }
       end
-      horizontal_box do
-        text "指導老師", size: "lg", color: "#555555", flex: 0
-        text "蘇金輝 謝沛芷", size: "lg", color: "#111111", align: "end"
-      end
-      end
-      separator color: "#c2c2c2"
-      vertical_box margin: "xxl" do
-        text "踏入校園，緩緩的走著，百花綻放，猶如《花舞》般紛飛的花兒迎接我們。在社團大樓底下，買了一杯《抹茶拿鐵》，走上階梯。一步一步，聽到那《黑鍵》的奇妙，牽伴著白鍵的柔和，徜徉在優美的旋律中，《夢幻曲》便已響起！在充滿精靈的《田園》裡唱著歌，《乘著歌聲的翅膀》一路翱翔。落霞殘照，夜幕低垂，《純白》的《月光》灑落，幻似《英雄》守護著社團大樓的每個角落。望著佇立在社辦的鋼琴，彷彿《命運》要讓我們相遇，伴隨《四季》的變換，讓《十億光年的距離》更加縮短，創造屬於我們的家，屬於我們的《第三樂章》！!",wrap: true,size: "sm"
-      end
-      separator color: "#c2c2c2"
-    end
-    footer do
-      url_button "Website","https://www.facebook.com/NtustPianoClub",style: "primary"
     end
   end
 end.to_json)%>
