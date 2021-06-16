@@ -24,10 +24,10 @@ class ReloadClub
     tds = @b.all("table").first.all("td")
     Club.create!(
       name: tds[1].text,
-      leader: tds[3].text,
-      teacher: tds[5].text,
-      intro: tds[7].text,
-      url: tds[9].text || url,
+      leader: (tds[3].text.empty? ? "-":tds[3].text),
+      teacher: (tds[5].text.empty? ? "-":tds[5].text),
+      intro: (tds[7].text.empty? ? "無介紹":tds[7].text),
+      url: (tds[9].text.empty? ? url:tds[9].text),
       updated_date: tds[11].text,
       category_id: category.id,
     )
