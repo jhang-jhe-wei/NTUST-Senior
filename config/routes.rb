@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get '全校不分系簡介',to: 'direction#inter_disciplinary_bachelors_program_introduction'
   #社團專區
   get '社團',to: 'direction#club_list'
+  get '(*category)社團(*page)',to: 'direction#club'
   #獎學金專區
   get '獎學金',to: 'direction#scholarship_list'
   #工讀專區
