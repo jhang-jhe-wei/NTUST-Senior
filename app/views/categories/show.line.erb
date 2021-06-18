@@ -1,6 +1,7 @@
 <%= raw(Kamiflex.hash(self) do
   carousel do
-    bubbles @clubs do |club|
+    @clubs.each do |club|
+    bubble action: message_action("#{club.name}資訊") do 
       header margin: "none", backgroundColor: @category.color do
         vertical_box do
           text club.name,gravity: "center",size: "xl",align: "center",color: "#FFFFFF"
@@ -29,6 +30,7 @@
         end
         url_button "Website", club.url, style: "primary", color: @category.color
       end
+      end
     end
     bubble do
       header margin: "none", backgroundColor: @category.color do
@@ -38,12 +40,12 @@
       end
       body margin: "none" do
         unless @clubs.first_page?
-          message_button "第一頁", "#{@category.name}社團1", style: "secondary", margin: "md"
-          message_button "上一頁", "#{@category.name}社團#{@clubs.prev_page}", style: "secondary", margin: "md"
+          message_button "第一頁", "#{@category.name}社團/1", style: "secondary", margin: "md"
+          message_button "上一頁", "#{@category.name}社團/#{@clubs.prev_page}", style: "secondary", margin: "md"
         end
         unless @clubs.blank? || @clubs.last_page?
-        message_button "下一頁", "#{@category.name}社團#{@clubs.next_page}", style: "secondary", margin: "md"
-        message_button "最後一頁", "#{@category.name}社團#{@clubs.total_pages}", style: "secondary", margin: "md"
+        message_button "下一頁", "#{@category.name}社團/#{@clubs.next_page}", style: "secondary", margin: "md"
+        message_button "最後一頁", "#{@category.name}社團/#{@clubs.total_pages}", style: "secondary", margin: "md"
         end
         message_button "換個口味", "社團", style: "secondary", margin: "md"
       end

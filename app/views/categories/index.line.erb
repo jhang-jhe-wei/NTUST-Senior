@@ -1,6 +1,6 @@
 <%= raw(Kamiflex.hash(self) do
   carousel do
-    @categorys.each do |category|
+    @categories.each do |category|
       bubble size: "nano", action: message_action("#{category.name}社團") do
         header backgroundColor: category.color do
           text category.name, color: "#ffffff", align: "center", size: "md", gravity: "center"
