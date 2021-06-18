@@ -117,6 +117,18 @@ GEM
       rails (>= 5.0.0)
     kamiliff (0.26.0)
       rails (>= 5.0.0)
+    kaminari (1.2.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
+      actionview
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
+      activerecord
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
     line-bot-api (1.19.0)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -251,6 +263,7 @@ DEPENDENCIES
   dotenv-rails (~> 2.7)
   jbuilder (~> 2.7)
   kamigo (~> 0.22.0)
+  kaminari
   listen (~> 3.3)
   mysql2
   puma (~> 5.0)

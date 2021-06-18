@@ -1,0 +1,32 @@
+<%= raw(Kamiflex.hash(self) do
+    bubble do
+      header margin: "none", backgroundColor: @club.category.color do
+        vertical_box do
+          text @club.name,gravity: "center",size: "xl",align: "center",color: "#FFFFFF"
+        end
+      end
+      body margin: "none" do
+        vertical_box do
+          horizontal_box do
+            text "社長姓名", size: "lg", color: "#555555", flex: 0
+            text @club.leader, size: "lg", color: "#111111", align: "end"
+          end
+          horizontal_box do
+            text "指導老師", size: "lg", color: "#555555", flex: 0
+            text @club.teacher, size: "lg", color: "#111111", align: "end"
+          end
+        end
+        separator color: "#c2c2c2"
+        vertical_box margin: "md" do
+          text @club.intro, wrap: true, size: "sm", maxLines: 10
+        end
+      end
+      footer do
+        separator color: "#c2c2c2"
+        vertical_box margin: "md" do
+          filler
+        end
+        url_button "Website", @club.url, style: "primary", color: @club.category.color
+      end
+  end
+end.to_json)%>

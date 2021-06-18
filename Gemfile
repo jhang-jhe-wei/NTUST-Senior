@@ -64,3 +64,5 @@ gem 'mysql2'
 
 gem 'capybara', '>= 3.26'
 gem 'selenium-webdriver'
+
+gem 'kaminari'
