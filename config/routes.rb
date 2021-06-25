@@ -43,5 +43,6 @@ Rails.application.routes.draw do
   get '未來規劃',to: 'direction#future_plan'
   get '學姊的經歷',to: 'direction#senior_experience'
   get '開發者的一段話',to: 'direction#developer_experience'
-  
+  #問題回報
+  resources :feedbacks
 end

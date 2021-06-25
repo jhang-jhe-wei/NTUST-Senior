@@ -1,0 +1,28 @@
+<%= raw( json = Kamiflex.build(self) do
+  bubble do
+    body do
+      horizontal_box do
+        text "🍔", flex: 0, action: message_action("/")
+        text "Feedbacks", weight: "bold", margin: "sm"
+        text "new", align: "end", action: uri_action(liff_path(path: new_feedback_path)), color: "#0000ee"
+      end
+      separator
+      if @feedbacks.present?
+        vertical_box margin: "lg" do
+          horizontal_box margin: "lg" do
+            text "Category", weight: "bold"
+            text "action", align: "end"
+          end
+          horizontal_box @feedbacks, margin: "lg" do |feedback|
+            text feedback.category, action: message_action("GET /feedbacks/#{feedback.id}")
+            text "❌", align: "end", action: message_action("DELETE /feedbacks/#{feedback.id}")
+          end
+        end
+      else
+        text "沒有目前內容", margin: "lg"
+      end
+    end
+  end
+end )%>
+
+<%puts json%>

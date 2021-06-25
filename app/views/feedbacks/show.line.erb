@@ -1,0 +1,25 @@
+<%= raw(Kamiflex.build(self) do
+  bubble do
+    body do
+      horizontal_box do
+        text "🍔", flex: 0, action: message_action("/")
+        text "Show Feedback", weight: "bold", margin: "sm"
+        text "edit", align: "end", action: uri_action(liff_path(path: edit_feedback_path(@feedback) )), color: "#0000ee"
+      end
+      separator
+
+      horizontal_box margin: "md" do
+        vertical_box do
+          text "id", weight: "bold", margin: "xs"
+          text "category", weight: "bold", margin: "xs"
+          text "content", weight: "bold", margin: "xs"
+        end
+        vertical_box do
+          text @feedback.id.blank? ? "-" : @feedback.id.to_s, align: "end", margin: "xs"
+          text @feedback.category.blank? ? "-" : @feedback.category.to_s, align: "end", margin: "xs"
+          text @feedback.content.blank? ? "-" : @feedback.content.to_s, align: "end", margin: "xs"
+        end
+      end
+    end
+  end
+end )%>
