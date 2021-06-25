@@ -1,0 +1,2 @@
+class SystemEventsController < ApplicationController
+end

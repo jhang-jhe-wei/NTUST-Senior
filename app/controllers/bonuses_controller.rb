@@ -1,0 +1,2 @@
+class BonusesController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class GuidesController < ApplicationController
+end
