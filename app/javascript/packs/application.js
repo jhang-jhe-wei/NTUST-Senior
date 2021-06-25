@@ -12,6 +12,13 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+import 'jquery'
+import 'popper.js'
+import 'bootstrap'
+import 'stylesheets/site.scss'
+window.jQuery = $
+window.$ = $
+
 /* kamiliff default behavior */
 window.addEventListener("liff_ready", function(event){
     register_kamiliff_submit();
