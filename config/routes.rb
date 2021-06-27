@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "follow", to: "system_events#follow"
   #指南
   get "我想請問", to: "guides#index"
+  get "新生引導", to: "guides#junior_index"
   #課務專區
   get '課務',to: 'courses#class_event'
   get '選課規定',to: 'courses#course_rule'

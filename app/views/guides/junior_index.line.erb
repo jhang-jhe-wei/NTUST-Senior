@@ -1,0 +1,61 @@
+<%vars = {
+  "新生該做的事": [
+    "設定信箱轉寄",
+    "加入天大地大頭殼版",
+    "加入新生Line群",
+    "如何設定WIFI",
+  ],
+  "畢業相關": [
+    "畢業條件",
+    "主修必修",
+    "共同必修",
+  ],
+  "課程相關": [
+    "怎麼選課",
+    "何時選課",
+    "選課規定",
+    "選課模擬",
+    "選課建議",
+    "選課常見問題",
+  ],
+  "校內資源": [
+    "校園軟體",
+    "伴讀",
+  ],
+  "新生活動": [
+    "社團博覽會",
+    "系學會活動",
+  ],
+  "台科社團": [
+    "學藝性",
+    "體育性",
+    "藝術性",
+    "聯誼性",
+    "服務性",
+    "自治性",
+  ],
+  "未來規劃": [
+    "聽聽學長姐怎麼說",
+  ],
+
+}%>
+<%= raw(
+Kamiflex.hash(self) do
+  carousel do
+    vars.each do |title, ary|
+      bubble size: "kilo" do
+        header backgroundColor: "#FF0000" do
+          vertical_box do
+            text title, gravity: "center", size: "xl", align: "center", color: "#FFFFFF"
+          end
+        end
+        body margin: "none" do
+          ary.each do |value|
+            message_button value, value, style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
+          end
+        end
+      end
+    end
+  end
+end.to_json
+)%>
