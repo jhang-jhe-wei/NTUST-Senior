@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   #新生該做的事
   get '設定信箱轉寄', to: "junior#mail_foward"
   get '加入台科大相關社群',to: 'introductions#school_community'
+  get '加入新生Line群',to: 'junior#line_community'
   #課務專區
   get '課務',to: 'courses#class_event'
   get '選課規定',to: 'courses#course_rule'
