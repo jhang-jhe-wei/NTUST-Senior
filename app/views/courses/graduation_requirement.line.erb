@@ -1,9 +1,9 @@
 <%@events = [{
   backgroundColor: "#27ACB2",
   stateColor: "#0D8186",
-  state: "專業選/必修",
+  state: "主修學分",
   percentage: "65%",
-  statement: "依各系規定，專業選/必修學分大多落在80~90個學分。",
+  statement: "依各系規定，主修學分大多落在80~90個學分。",
 }, {
   backgroundColor: "#FF6B6E",
   stateColor: "#DE5658",
@@ -42,14 +42,17 @@
 end),(Kamiflex.hash(self) do
   bubble do
     body do
-      text "想要畢業你得修滿畢業最低學分數，依各系會有不同，大多在128~135之間，而畢業學分數的組成如同上圖(可點擊)。詳情部分請查閱全校不分系官網上方的學生資訊 - 畢業條件",size: "sm",wrap: true
-      separator color: "#aaaaaa"
-      url_button "全校不分系官網","https://jc.ntust.edu.tw/",style: "primary"    
+      text "想要畢業你得修滿畢業最低學分數，畢業學分數的組成如同上圖(可點擊)。詳情部分請查閱全校不分系官網的畢業條件",size: "sm",wrap: true
+      separator color: "#aaaaaa" 
+    end
+    footer do
+      url_button "全校不分系官網","https://jc.ntust.edu.tw/",style: "primary"   
     end
   end
-  quick_reply do
-    message_action_item("專業選/必修")
-    message_action_item("共同必修")
-    message_action_item("自由選修")
-  end
-end)].to_json )%>
+end),
+{
+    type: "image",
+    originalContentUrl: "https://i.imgur.com/eBP923F.jpg",
+    previewImageUrl: "https://i.imgur.com/eBP923F.jpg"
+}
+].to_json )%>

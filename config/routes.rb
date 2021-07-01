@@ -13,19 +13,20 @@ Rails.application.routes.draw do
   get '設定信箱轉寄', to: "junior#mail_foward"
   get '加入台科大相關社群',to: 'introductions#school_community'
   get '加入新生Line群',to: 'junior#line_community'
-  get '校園網路',to: 'junior#network_setup'
   #課務專區
   get '課務',to: 'courses#class_event'
   get '選課規定',to: 'courses#course_rule'
   get '加簽',to: 'courses#add_course'
   get '選課流程',to: 'courses#course_selection_process'
   get '畢業條件',to: 'courses#graduation_requirement'
-  get '專業選/必修',to: 'courses#major_course'
+  get '主修學分',to: 'courses#major_course'
   get '共同必修',to: 'courses#common_requirement'
   get '自由選修',to: 'courses#free_option_course'
   get '雙主/輔系',to: 'courses#double_major_and_minor'
   get '其他系必修',to: 'courses#other_major_required_course'
   get '我的導師是誰',to: 'courses#search_class_teacher'
+  get '選課模擬',to: 'courses#course_selection_simulator'
+  get '選課常見問題',to: 'courses#faq'
   #校園設施專區
   get '美食',to: 'school_facilities#food_list'
   get '校園地圖',to: 'school_facilities#school_map'
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
   get '影印店',to: 'school_facilities#copy_shop'
   get '剪髮廳',to: 'school_facilities#haircut_shop'
   get '生活用品',to: 'school_facilities#daily_supplies_shop'
+  get '校園網路',to: 'school_facilities#network_setup'
+  get '校園軟體',to: 'school_facilities#software'
   #介紹專區
   get '校版',to: 'introductions#school_community'
   get '台科大',to: 'introductions#about_ntust'
