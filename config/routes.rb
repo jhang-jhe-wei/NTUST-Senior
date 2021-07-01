@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   #指南
   get "我想請問", to: "guides#index"
   get "新生引導", to: "guides#junior_index"
+  #新生該做的事
+  get '設定信箱轉寄', to: "junior#mail_foward"
   #課務專區
   get '課務',to: 'courses#class_event'
   get '選課規定',to: 'courses#course_rule'
