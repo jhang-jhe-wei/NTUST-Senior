@@ -1,0 +1,19 @@
+<%= raw([{type: "text",text: "不好意思！學姊不懂你的要求，請點擊以下按鍵向我提問吧。"},(Kamiflex.hash(self) do
+  carousel do
+    bubble size: "nano" do
+      body margin: "none", action: message_action("新生引導") do
+         text "新生引導", align: "center"
+      end
+    end
+    bubble size: "nano" do
+      body margin: "none", action: message_action("我想請問") do
+         text "我想請問", align: "center"
+      end
+    end
+    bubble size: "nano" do
+      body margin: "none", action: uri_action("https://liff.line.me/1656022412-QDyzYN5j/eyJwYXRoIjoiL2ZlZWRiYWNrcy9uZXciLCJsaWZmX3NpemUiOiJUQUxMIn0") do
+         text "問題回報", align: "center"
+      end
+    end
+  end
+end)].to_json)%>

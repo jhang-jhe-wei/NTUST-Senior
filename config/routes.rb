@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  root to: "direction#index"
+  root to: "guides#index"
+  #Liff
+  get 'liff_entry/:base64', to: 'liff#entry'
+  get 'liff_entry', to: 'liff#entry'
+  post 'liff_route', to: 'liff#route'
+  #系統事件
   get "follow", to: "system_events#follow"
   #指南
   get "我想請問", to: "guides#index"
@@ -47,5 +52,6 @@ Rails.application.routes.draw do
   get '開發者的一段話',to: 'experiences#developer_experience'
   #問題回報
   resources :feedbacks
-  
+  #other
+  get '*other',to: 'guides#other'
 end
