@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get '生活用品',to: 'school_facilities#daily_supplies_shop'
   get '校園網路',to: 'school_facilities#network_setup'
   get '校園軟體',to: 'school_facilities#software'
+  get '校園運動設施',to: 'school_facilities#playground'
   #介紹專區
   get '校版',to: 'introductions#school_community'
   get '台科大',to: 'introductions#about_ntust'

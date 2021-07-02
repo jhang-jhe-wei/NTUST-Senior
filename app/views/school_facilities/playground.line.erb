@@ -1,4 +1,118 @@
-<%= raw({
-    type: "text",
-    text: "台科大校園有許多的場館，但除了體育課或是校隊練習外，一般學生都要採取借用登記才可以使用，相關規定可以查看這邊 https://www.sport.ntust.edu.tw/p/412-1069-8568.php?Lang=zh-tw"
-}.to_json)%>
+<% vars=[
+{
+    img: "https://www.sport.ntust.edu.tw/var/file/69/1069/img/795387197.jpg",
+    name: "健身房",
+    place: "體育館地下一樓",
+    time: "平日全天",
+    remark: "跑步機需借用磁卡才可以使用。預約/體育課優先。"
+},
+{
+    img: "https://www.sport.ntust.edu.tw/var/file/69/1069/img/2645/854726760.jpg",
+    name: "游泳池",
+    place: "體育館一樓",
+    time: "平日中午、晚上/假日全天",
+    remark: "游泳池需付費，校內學生一次約20元。校隊/體育課優先。"
+},
+{
+    img: "https://sport-r.ntust.edu.tw/var/file/69/1069/img/2645/864726756.jpg",
+    name: "排球場",
+    place: "體育館前方",
+    time: "不限",
+    remark: "系隊/校隊/體育課優先。"
+},
+{
+    img: "https://sport-r.ntust.edu.tw/var/file/69/1069/img/2645/462867683.jpg",
+    name: "籃球場",
+    place: "TR(研揚大樓)前方",
+    time: "不限",
+    remark: "平日晚上有燈，超過22:00要插卡。體育課優先。"
+},
+{
+    img: "https://www.sport.ntust.edu.tw/var/file/69/1069/img/851475208.jpg",
+    name: "桌球室",
+    place: "TR(研揚大樓)地下一樓",
+    time: "平日全天",
+    remark: "需要",
+},
+{
+    img: "https://www.sport.ntust.edu.tw/var/file/69/1069/img/2645/442762828.jpg",
+    name: "撞球室",
+    place: "TR(研揚大樓)地下一樓",
+    time: "平日全天",
+    remark: "需要",
+},
+{
+    img: "https://www.sport.ntust.edu.tw/var/file/69/1069/img/2645/688665621.jpg",
+    name: "體育場",
+    place: "體育館二樓",
+    time: "平日假日全天",
+    remark: "羽球課/籃球聯賽舉辦場地。校隊/體育課優先。"
+},
+{
+    img: "https://www.sport.ntust.edu.tw/var/file/69/1069/img/614610487.jpg",
+    name: "綜合球場",
+    place: "體育館地下一樓",
+    time: "平日假日全天",
+    remark: "系隊/體育課優先。"
+},
+{
+    img: "https://www.sport.ntust.edu.tw/var/file/69/1069/img/2645/352124015.jpg",
+    name: "韻律教室",
+    place: "體育館地下一樓",
+    time: "平日假日全天",
+    remark: "需要",
+},
+{
+    img: "https://sport-r.ntust.edu.tw/var/file/69/1069/img/2645/529009344.jpg",
+    name: "操場",
+    place: "TR(研揚大樓)前方",
+    time: "不限",
+    remark: "無。"
+},
+{
+    img: "https://sport-r.ntust.edu.tw/var/file/69/1069/img/2645/718229126.jpg",
+    name: "網球場",
+    place: "TR(研揚大樓)前方",
+    time: "平日假日全天",
+    remark: "平日晚上有燈。校隊/社團/體育課優先。"
+},
+{
+    img: "https://sport-r.ntust.edu.tw/var/file/69/1069/img/2645/307714178.jpg",
+    name: "足球場",
+    place: "TR(研揚大樓)前方",
+    time: "平日假日全天",
+    remark: "平日晚上有燈。校隊/體育課優先。"
+}
+]%>
+<%= raw([(Kamiflex.hash(self) do
+    carousel do
+        bubbles vars do |var|
+            hero var[:img],
+            size: :full, aspectRatio: "20:13", aspectMode: :cover, action: uri_action(var[:img])
+            body do
+                text var[:name], weight: :bold, size: :xl,align: "center"
+                separator color: "#aaaaaa"
+                vertical_box margin: :md, spacing: :sm do
+                    baseline_box spacing: :xl do
+                    text "地點", "color": "#aaaaaa", "size": "sm", "flex": 2, align: "end"
+                    text var[:place], "wrap": true, "color": "#666666", "size": "sm", "flex": 5
+                    end
+                    baseline_box spacing: :xl do
+                    text "開放時間", "color": "#aaaaaa", "size": "sm", "flex": 2, align: "end",wrap: true
+                    text var[:time], "wrap": true, "color": "#666666", "size": "sm", "flex": 5
+                    end
+                    baseline_box spacing: :xl do
+                    text "備註", "color": "#aaaaaa", "size": "sm", "flex": 2, align: "end"
+                    text var[:remark], "wrap": true, "color": "#666666", "size": "sm", "flex": 5
+                    end
+                end
+            end
+        end
+    end
+end),{type: "text",text: "如需舉辦活動，以上各場館皆可向體育室進行租借，各場館開放時間可能會受到調整，最新開放時間依校方公告為準。
+
+🎾 體育室公布欄
+https://sport-r.ntust.edu.tw/p/412-1069-8802.php?Lang=zh-tw
+🎾 查看各場地租借情形
+https://www.sport.ntust.edu.tw/p/412-1069-8568.php?Lang=zh-tw
+"}].to_json)%>
