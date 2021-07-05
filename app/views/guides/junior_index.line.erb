@@ -1,10 +1,4 @@
 <%vars = {
-  "新生該做的事": [
-    "設定信箱轉寄",
-    "加入台科大相關社群",
-    "加入新生Line群",
-    "填寫學籍管理系統"
-  ],
   "畢業相關": [
     "畢業條件",
     "主修學分",
@@ -37,20 +31,16 @@
 <%= raw(
 Kamiflex.hash(self) do
   carousel do
+    menu "新生該做的事" do
+      message_button "設定信箱轉寄", "設定信箱轉寄", style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
+      message_button "加入台科大相關社群", "加入台科大相關社群", style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
+      url_button "加入新生Line群", "https://line.me/R/ti/g/igeUR2L8Th", style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
+      message_button "填寫學籍管理系統", "填寫學籍管理系統", style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
+    end
     vars.each do |title, ary|
-      bubble size: "kilo" do
-        header backgroundColor: "#FF0000" do
-          vertical_box do
-            text title, gravity: "center", size: "xl", align: "center", color: "#FFFFFF"
-          end
-        end
-        body margin: "none" do
-          ary.each do |value|
-            message_button value, value, style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
-          end
-        end
-        footer do
-          filler
+      menu title do
+        ary.each do |value|
+          message_button value, value, style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
         end
       end
     end
