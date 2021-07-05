@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:etrex/omniauth-line.git
+  remote: https://github.com/etrex/omniauth-line.git
   revision: fd880c99340bb3f7dde90a6f7ff26565b9c12982
   specs:
     omniauth-line (0.0.3)

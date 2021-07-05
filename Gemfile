@@ -68,4 +68,4 @@ gem 'selenium-webdriver'
 gem 'kaminari'
 
 gem 'devise'
-gem 'omniauth-line', git: 'git@github.com:etrex/omniauth-line.git'
+gem 'omniauth-line', git: 'https://github.com/etrex/omniauth-line.git'
