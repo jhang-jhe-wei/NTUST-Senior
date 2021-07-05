@@ -1,3 +1,7 @@
+<%image_urls = [
+  "https://blog.wells.tw/NTUST-Senior/images/major1.png",
+  "https://blog.wells.tw/NTUST-Senior/images/major2.png"
+]%>
 <%= raw([(Kamiflex.hash(self) do
   bubble do
     body do
@@ -12,14 +16,13 @@
     end
   end
 end),
-{
-    type: "image",
-    originalContentUrl: "https://i.imgur.com/sMpobiV.png",
-    previewImageUrl: "https://i.imgur.com/sMpobiV.png"
-},
-{
-    type: "image",
-    originalContentUrl: "https://i.imgur.com/xibJMEO.png",
-    previewImageUrl: "https://i.imgur.com/xibJMEO.png"
-}
+(Kamiflex.hash(self) do
+  carousel do
+    bubbles image_urls, size: :giga do |image_url|
+      body paddingAll: "0px" do
+        image image_url, size: :full, aspectRatio: "1764:1106", aspectMode: :fit, action: uri_action(image_url)
+      end
+    end
+  end
+end)
 ].to_json)%>
