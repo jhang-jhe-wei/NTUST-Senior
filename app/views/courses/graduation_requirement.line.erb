@@ -20,7 +20,7 @@
 <%= raw([(Kamiflex.hash(self) do
   carousel do
     @events.each do |event|
-      bubble size: "nano",action: message_action(event[:state]) do
+      bubble size: "micro",action: message_action(event[:state]) do
         header backgroundColor: event[:backgroundColor], paddingTop: "19px", paddingAll: "12px", paddingBottom: "16px" do
           text event[:state], color: "#ffffff", align: "start", size: "md", gravity: "center", wrap: true
           text event[:percentage], color: "#ffffff", align: "start", size: "xs", gravity: "center", margin: "lg"
@@ -34,6 +34,7 @@
           horizontal_box flex: 1 do
             text event[:statement], color: "#8C8C8C", size: "sm", wrap: true
           end
+          message_button "查看", event[:state]
         end
         styles footer: { separator: false }
       end
@@ -49,10 +50,6 @@ end),(Kamiflex.hash(self) do
       url_button "全校不分系官網","https://jc.ntust.edu.tw/",style: "primary"   
     end
   end
-end),
-{
-    type: "image",
-    originalContentUrl: "https://i.imgur.com/eBP923F.jpg",
-    previewImageUrl: "https://i.imgur.com/eBP923F.jpg"
-}
+end),(image_flex("https://blog.wells.tw/NTUST-Senior/images/graduation_requirement.jpg")
+)
 ].to_json )%>
