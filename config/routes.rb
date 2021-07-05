@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root to: "guides#index"
+  #devise
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'omniauth_callbacks'
+  }
   #Liff
   get 'liff_entry/:base64', to: 'liff#entry'
   get 'liff_entry', to: 'liff#entry'

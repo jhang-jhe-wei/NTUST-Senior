@@ -66,3 +66,6 @@ gem 'capybara', '>= 3.26'
 gem 'selenium-webdriver'
 
 gem 'kaminari'
+
+gem 'devise'
+gem 'omniauth-line', git: 'git@github.com:etrex/omniauth-line.git'
