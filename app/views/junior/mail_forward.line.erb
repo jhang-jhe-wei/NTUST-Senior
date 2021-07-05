@@ -1,0 +1,9 @@
+<%image_urls = [
+  "https://blog.wells.tw/NTUST-Senior/images/mail_forward1.jpg",
+  "https://blog.wells.tw/NTUST-Senior/images/mail_forward2.jpg",
+  "https://blog.wells.tw/NTUST-Senior/images/mail_forward3.jpg",
+  "https://blog.wells.tw/NTUST-Senior/images/mail_forward4.jpg"
+]%>
+<%= raw([{type: "text", text: "請至台科大官網 https://www.ntust.edu.tw/home.php
+並依下圖指示操作
+ps. 校園信箱密碼通常為學生資訊系統密碼前加 m"},image_flex(image_urls)].to_json)%>

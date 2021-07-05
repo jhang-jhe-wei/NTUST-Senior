@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "我想請問", to: "guides#index"
   get "新生引導", to: "guides#junior_index"
   #新生該做的事
-  get '設定信箱轉寄', to: "junior#mail_foward"
+  get '設定信箱轉寄', to: "junior#mail_forward"
   get '加入台科大相關社群',to: 'introductions#school_community'
   get '加入新生Line群',to: 'junior#line_community'
   #課務專區
