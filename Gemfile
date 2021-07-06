@@ -60,7 +60,7 @@ gem "kamigo", "~> 0.22.0"
 
 gem "dotenv-rails", "~> 2.7"
 
-gem 'mysql2'
+gem 'pg'
 
 gem 'capybara', '>= 3.26'
 gem 'selenium-webdriver'

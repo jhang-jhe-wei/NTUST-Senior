@@ -1,6 +1,6 @@
 class CreateClubs < ActiveRecord::Migration[6.1]
   def change
-    create_table :clubs, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    create_table :clubs do |t|
       t.string :name
       t.string :leader
       t.string :teacher
