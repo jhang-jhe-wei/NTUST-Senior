@@ -15,6 +15,9 @@
     "校園軟體",
     "校園網路",
     "校園運動設施"
+  ],
+  "其他問題": [
+    "我的導師是誰"
   ]
 }%>
 <%
@@ -32,15 +35,15 @@ todos = {"新生活動": [
 Kamiflex.hash(self) do
   carousel do
     menu "新生該做的事" do
-      message_button "設定信箱轉寄", "設定信箱轉寄", style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
-      message_button "加入台科大相關社群", "加入台科大相關社群", style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
-      url_button "加入新生Line群", "https://line.me/R/ti/g/igeUR2L8Th", style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
-      message_button "填寫學籍管理系統", "填寫學籍管理系統", style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
+      menu_text_item("設定信箱轉寄")
+      menu_text_item("加入台科大相關社群")
+      menu_uri_item("加入新生Line群", "https://line.me/R/ti/g/igeUR2L8Th")
+      menu_text_item("填寫學籍管理系統")
     end
     vars.each do |title, ary|
       menu title do
         ary.each do |value|
-          message_button value, value, style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"
+          menu_text_item(value)
         end
       end
     end

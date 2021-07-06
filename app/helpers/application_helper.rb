@@ -12,9 +12,9 @@ module ApplicationHelper
     end
   end
 
-  def menu(title)
+  def menu(title, backgroundColor = "#FF0000")
     bubble size: "kilo" do
-      header backgroundColor: "#FF0000" do
+      header backgroundColor: backgroundColor do
         vertical_box do
           text title, gravity: "center", size: "xl", align: "center", color: "#FFFFFF"
         end
@@ -26,5 +26,13 @@ module ApplicationHelper
         filler
       end
     end
+  end
+
+  def menu_text_item(text, **options)
+    message_button text, text, {style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"}.merge(options)
+  end
+
+  def menu_uri_item(label, url, **options)
+    url_button label, url, {style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"}.merge(options)
   end
 end
