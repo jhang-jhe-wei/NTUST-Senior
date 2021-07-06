@@ -35,4 +35,47 @@ module ApplicationHelper
   def menu_uri_item(label, url, **options)
     url_button label, url, {style: "secondary", margin: "md", height: "sm", adjustMode: "shrink-to-fit", color: "#eeeeee"}.merge(options)
   end
+
+  def rich_menu
+    {
+    "type": "imagemap",
+    "baseUrl": "https://blog.wells.tw/NTUST-Senior/richmenu",
+    "altText": "This is an imagemap",
+    "baseSize": {
+        "width": 1040,
+        "height": 351
+    },
+    "actions": [{
+            "type": "message",
+            "text": "新生引導",
+            "area": {
+                "x": 0,
+                "y": 0,
+                "width": 346,
+                "height": 351
+            }
+        },
+        {
+            "type": "message",
+            "text": "我想請問",
+            "area": {
+                "x": 346,
+                "y": 0,
+                "width": 346,
+                "height": 351
+            }
+        },
+        {
+            "type": "uri",
+            "linkUri": "https://liff.line.me/1656022412-QDyzYN5j/eyJwYXRoIjoiL2ZlZWRiYWNrcy9uZXciLCJsaWZmX3NpemUiOiJUQUxMIn0",
+            "area": {
+                "x": 692,
+                "y": 0,
+                "width": 346,
+                "height": 351
+            }
+        }
+    ]
+}
+  end
 end
