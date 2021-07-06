@@ -1,20 +1,46 @@
-<%= raw(Kamiflex.build(self) do
-  bubble do
-    body do
-      text "嗨！請問你有什麼問題呢？",size: "xl",wrap: true
-      text "請使用智慧型手機點選訊息下方選項",color: "#cccccc",size: "xs"
+<%= raw(Kamiflex.hash(self) do
+  carousel do
+    menu "美食", "#6184D8" do
+      menu_text_item("美食")
+      menu_text_item("學餐位置")
+    end
+
+    menu "生活機能", "#6184D8" do
+      menu_text_item("提款機")
+      menu_text_item("剪髮廳")
+      menu_text_item("生活用品")
+    end
+
+    menu "娛樂", "#6184D8" do
+      menu_text_item("社團")
+      menu_text_item("校園運動設施")
+    end
+
+    menu "賺錢機會", "#6184D8" do
+      menu_text_item("獎學金")
+      menu_text_item("工讀機會")
     end
   end
-  quick_reply do
-    message_action_item("選課規定")
-    message_action_item("選課流程")
-    message_action_item("畢業條件")
-    message_action_item("我的導師是誰")
-    message_action_item("台科大")
-    message_action_item("全校不分系")
-    message_action_item("社團")
-    message_action_item("獎學金")
-    message_action_item("工讀機會")
-    message_action_item("未來規劃")
-  end
-end) %>
+end.to_json) %>
+<%
+#Kamiflex.build(self) do
+#  bubble do
+#    body do
+#      text "嗨！請問你有什麼問題呢？",size: "xl",wrap: true
+#      text "請點選訊息下方選項",color: "#cccccc",size: "xs"
+#    end
+#  end
+#  quick_reply do
+#    message_action_item("選課規定")
+#    message_action_item("選課流程")
+#    message_action_item("畢業條件")
+#    message_action_item("我的導師是誰")
+#    message_action_item("台科大")
+#    message_action_item("全校不分系")
+#    message_action_item("社團")
+#    message_action_item("獎學金")
+#    message_action_item("工讀機會")
+#    message_action_item("未來規劃")
+#  end
+#end
+%>
