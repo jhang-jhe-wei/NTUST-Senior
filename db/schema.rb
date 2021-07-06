@@ -10,16 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_032024) do
+ActiveRecord::Schema.define(version: 2021_07_06_073803) do
 
-  create_table "categories", charset: "utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "clubs", charset: "utf8mb4", force: :cascade do |t|
+  create_table "clubs", force: :cascade do |t|
     t.string "name"
     t.string "leader"
     t.string "teacher"
@@ -32,21 +35,21 @@ ActiveRecord::Schema.define(version: 2021_07_05_032024) do
     t.index ["category_id"], name: "index_clubs_on_category_id"
   end
 
-  create_table "feedbacks", charset: "utf8", force: :cascade do |t|
+  create_table "feedbacks", force: :cascade do |t|
     t.string "category"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "todos", charset: "utf8", force: :cascade do |t|
+  create_table "todos", force: :cascade do |t|
     t.string "name"
     t.string "desc"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", charset: "utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -57,7 +60,6 @@ ActiveRecord::Schema.define(version: 2021_07_05_032024) do
     t.string "line_id"
     t.string "name"
     t.string "image_url"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
