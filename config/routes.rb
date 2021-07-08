@@ -66,6 +66,8 @@ Rails.application.routes.draw do
   get '開發者的一段話',to: 'experiences#developer_experience'
   #問題回報
   resources :feedbacks
+  get 'notifies/callback',to: 'notifies#callback'
+  resources :notifies, only: [:index]
   #other
   get '*other',to: 'guides#other'
 end
