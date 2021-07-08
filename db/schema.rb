@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_06_073803) do
+ActiveRecord::Schema.define(version: 2021_07_07_054938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(version: 2021_07_06_073803) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "notifies", force: :cascade do |t|
+    t.string "name"
+    t.string "intro"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "notify_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["notify_id"], name: "index_subscriptions_on_notify_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "todos", force: :cascade do |t|
     t.string "name"
     t.string "desc"
@@ -60,8 +76,11 @@ ActiveRecord::Schema.define(version: 2021_07_06_073803) do
     t.string "line_id"
     t.string "name"
     t.string "image_url"
+    t.string "line_notify_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "clubs", "categories"
+  add_foreign_key "subscriptions", "notifies"
+  add_foreign_key "subscriptions", "users"
 end

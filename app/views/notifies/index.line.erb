@@ -1,0 +1,8 @@
+<%= raw(Kamiflex.hash(self) do
+    carousel do
+        cover
+        @notifies.each do |notify|
+            page(notify.name, notify.intro, notify.id)
+        end
+    end
+end.to_json)%>

@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:line]
 
+  has_many :subscriptions, dependent: :destroy
+  has_many :notifies, through: :subscriptions
+
   def self.from_omniauth(auth)
     if auth.provider == "line"
       user = User.find_or_create_by(line_id: auth.uid)
