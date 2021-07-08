@@ -15,6 +15,16 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  def revoke
+    subscription = Subscription.find_by(subscription_params)
+    if subscription
+      subscription.delete
+      lotify.send(current_user.line_notify_token, message: "已取消 #{subscription.notify.name} 訂閱！")
+      render json: { type: "text", text: "已取消該通知！" }
+    else
+      render json: { type: "text", text: "你沒有訂閱此通知！" }
+    end
+  end
 
   private
 
