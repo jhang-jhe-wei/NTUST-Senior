@@ -170,6 +170,8 @@ GEM
     loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
+    lotify (0.3.0)
+      json
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
@@ -322,6 +324,7 @@ DEPENDENCIES
   kamigo (~> 0.22.0)
   kaminari
   listen (~> 3.3)
+  lotify
   omniauth-line!
   pg
   puma (~> 5.0)
