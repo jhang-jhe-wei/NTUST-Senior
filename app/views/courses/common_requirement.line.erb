@@ -1,80 +1,10 @@
 <%= raw(Kamiflex.hash(self) do
-  bubble do
-    body do
-      vertical_box do
-        text "四年制", weight: "bold", color: "#1DB446", size: "sm"
-        text "共同必修科目表", weight: "bold", size: "xxl", margin: "md"
-        text "109學年（參考）", size: "xs", color: "#aaaaaa", wrap: true
-        vertical_box margin: "xxl", spacing: "sm" do
-          separator
-          horizontal_box do
-            text "社會實踐", size: "sm", color: "#555555", flex: 0,wrap: true
-            text "1 學分", size: "sm", color: "#111111", align: "end"
-          end
-          separator
-          horizontal_box do
-            text "國文", size: "sm", color: "#555555"
-            vertical_box flex: 2,spacing: "md" do
-              text "國文課4選1", size: "sm", color: "#111111", align: "start"
-              text "新生中文說寫專題", size: "sm", color: "#111111", align: "start"
-            end
-            vertical_box spacing: "md"do
-              text "3 學分", size: "sm", color: "#111111", align: "end"
-              text "3 學分", size: "sm", color: "#111111", align: "end"
-            end
-          end
-          separator
-          horizontal_box do
-            text "英文", size: "sm", color: "#555555"
-            vertical_box flex: 2,spacing: "md" do
-              text "校內英文檢定", size: "sm", color: "#111111", align: "start"
-              text "英文字彙與閱讀(上)", size: "sm", color: "#111111", align: "start"
-              text "英文字彙與閱讀(下)", size: "sm", color: "#111111", align: "start"
-              text "英語口語訓練(上)", size: "sm", color: "#111111", align: "start"
-              text "英語口語訓練(下)", size: "sm", color: "#111111", align: "start"
-              text "英文必選修課程", size: "sm", color: "#111111", align: "start"
-            end
-            vertical_box spacing: "md"do
-              text "0 學分", size: "sm", color: "#111111", align: "end"
-              text "2 學分", size: "sm", color: "#111111", align: "end"
-              text "2 學分", size: "sm", color: "#111111", align: "end"
-              text "2 學分", size: "sm", color: "#111111", align: "end"
-              text "2 學分", size: "sm", color: "#111111", align: "end"
-              text "4 學分", size: "sm", color: "#111111", align: "end"
-            end
-          end
-          text "關於英文課程抵免請查閱台科大官網",color: "#aaaaaa", align: "center",size: "sm"
-
-          separator
-          horizontal_box do
-            text "通識", size: "sm", color: "#555555"
-            vertical_box flex: 2,spacing: "md" do
-              text "A~F向度選4種", size: "sm", color: "#111111", align: "start"
-            end
-            vertical_box spacing: "md"do
-              text "15 學分", size: "sm", color: "#111111", align: "end"
-            end
-          end
-          separator
-          horizontal_box do
-            text "體育", size: "sm", color: "#555555"
-            vertical_box flex: 2,spacing: "md" do
-              text "一～三年級必修", size: "sm", color: "#111111", align: "start"
-            end
-            vertical_box spacing: "md"do
-              text "0 學分", size: "sm", color: "#111111", align: "end"
-            end
-          end
-          separator
-          horizontal_box do
-            text "總計", size: "sm", color: "#555555"
-            vertical_box spacing: "md"do
-              text "34 學分", size: "sm", color: "#111111", align: "end"
-            end
-          end
-        end
-      end
-    end
-    styles footer: {separator: true}
+  carousel do
+    common_credit_overview
+    common_credit_chinese
+    common_credit_english
+    common_credit_general_education
+    common_credit_physical_education
+    common_credit_social_service
   end
 end.to_json)%>
