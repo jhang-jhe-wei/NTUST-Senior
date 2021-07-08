@@ -15,4 +15,19 @@ module NotifiesHelper
         end
     end
 
+    def page(title, content, notify_id)
+        bubble do
+            header backgroundColor: "#00CE39", layout: "horizontal" do
+                text title, align: "center", color: "#ffffff", size: "xl", margin: "none", weight: "bold"
+            end
+            body do
+                text content, wrap: true
+            end
+            footer paddingTop: "0px" do
+                separator color: "#c2c2c2", margin: "xl"
+                message_button "取消訂閱", "取消通知#{notify_id}"
+                message_button "開始訂閱", "訂閱通知#{notify_id}", style: "primary"
+            end
+        end
+    end
 end

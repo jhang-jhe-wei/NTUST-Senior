@@ -66,6 +66,9 @@ Rails.application.routes.draw do
   get '開發者的一段話',to: 'experiences#developer_experience'
   #問題回報
   resources :feedbacks
+  #Notify
+  get '訂閱通知(*notify_id)',to: 'subscriptions#subscribe'
+  get '取消通知(*notify_id)',to: 'subscriptions#revoke'
   get 'notifies/callback',to: 'notifies#callback'
   resources :notifies, only: [:index]
   #other

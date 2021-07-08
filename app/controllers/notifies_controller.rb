@@ -1,5 +1,6 @@
 class NotifiesController < ApplicationController
   def index
+    @notifies = Notify.all
     @auth_link = lotify.get_auth_link(current_user.line_id)
   end
 
