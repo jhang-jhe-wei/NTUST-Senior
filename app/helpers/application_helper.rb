@@ -12,7 +12,7 @@ module ApplicationHelper
     end
   end
 
-  def menu(title, backgroundColor = "#D99AC5")
+  def menu(title, backgroundColor = "#FEB9EF")
     bubble size: "kilo" do
       header backgroundColor: backgroundColor do
         vertical_box do
