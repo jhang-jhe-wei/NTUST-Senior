@@ -7,7 +7,7 @@ class SubscriptionsController < ApplicationController
       subscription = Subscription.new(subscription_params)
       if subscription.save
         current_user.subscriptions << subscription
-        lotify.send(current_user.line_notify_token, message: "#{subscription.notify.name} 訂閱成功！")
+        LineNotify.send(current_user.line_notify_token, message: "#{subscription.notify.name} 訂閱成功！")
         render json: { type: "text", text: "恭喜你完成 #{subscription.notify.name} 的訂閱！" }
       else
         render json: { type: "text", text: subscription.errors.to_s }
@@ -19,7 +19,7 @@ class SubscriptionsController < ApplicationController
     subscription = Subscription.find_by(subscription_params)
     if subscription
       subscription.delete
-      lotify.send(current_user.line_notify_token, message: "已取消 #{subscription.notify.name} 訂閱！")
+      LineNotify.send(current_user.line_notify_token, message: "已取消 #{subscription.notify.name} 訂閱！")
       render json: { type: "text", text: "已取消該通知！" }
     else
       render json: { type: "text", text: "你沒有訂閱此通知！" }
@@ -35,13 +35,5 @@ class SubscriptionsController < ApplicationController
   def subscription_params
     params[:user_id] = current_user.id
     params.permit(:user_id, :notify_id)
-  end
-
-  def lotify
-    Lotify::Client.new(
-      client_id: ENV["LINE_NOTIFY_CLIENT_ID"],
-      client_secret: ENV["LINE_NOTIFY_CLIENT_SECRET"],
-      redirect_uri: ENV["LINE_NOTIFY_REDIRECT_URI"],
-    )
   end
 end
