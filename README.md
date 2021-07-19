@@ -31,10 +31,3 @@
 
 如有其他問題可以聯絡我的[Facebook](https://www.facebook.com/profile.php?id=100006651004776)或Email到我的信箱`b10730224@ntust.mail.edu.tw`
 
-## 問題修正
-- follow加quick reply
-- 目錄層次攤平
-- 加簽跟選課流程用carousel
-- 每次結束加quick reply
-- 內容先打好
-- 內容處理好就把quick reply換成flex message
