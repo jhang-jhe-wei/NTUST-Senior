@@ -42,19 +42,11 @@ ActiveRecord::Schema.define(version: 2021_07_07_054938) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "notifies", force: :cascade do |t|
-    t.string "name"
-    t.string "intro"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "subscriptions", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "notify_id", null: false
+    t.string "notify_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["notify_id"], name: "index_subscriptions_on_notify_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
@@ -81,6 +73,5 @@ ActiveRecord::Schema.define(version: 2021_07_07_054938) do
   end
 
   add_foreign_key "clubs", "categories"
-  add_foreign_key "subscriptions", "notifies"
   add_foreign_key "subscriptions", "users"
 end

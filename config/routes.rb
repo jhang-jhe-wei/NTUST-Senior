@@ -67,12 +67,12 @@ Rails.application.routes.draw do
   #問題回報
   resources :feedbacks
   #Notify
-  get '訂閱通知(*notify_id)',to: 'subscriptions#subscribe'
-  get '取消通知(*notify_id)',to: 'subscriptions#revoke'
-  get '通知服務',to: 'notifies#index'
+  get '訂閱通知/:notify_type',to: 'subscriptions#subscribe'
+  get '取消通知/:notify_type',to: 'subscriptions#revoke'
+  get '訂閱通知',to: 'notifies#index'
   get 'notify操作說明',to: 'notifies#tutorial'
   get 'notifies/callback',to: 'notifies#callback'
-  resources :notifies, only: [:index]
+  get 'notifies/version', to: 'notifies#version'
   #other
   get '*other',to: 'guides#other'
 end

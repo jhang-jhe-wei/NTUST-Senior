@@ -1,8 +1,6 @@
 <%= raw(Kamiflex.hash(self) do
     carousel do
         cover
-        @notifies.each do |notify|
-            page(notify.name, notify.intro, notify.id)
-        end
+        page("版本更新通知", "訂閱後有關於版本的更新都會通知你哦！")
     end
 end.to_json)%>

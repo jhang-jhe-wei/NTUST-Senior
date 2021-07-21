@@ -1,7 +1,8 @@
 class RemoveUserEmailUnique < ActiveRecord::Migration[6.1]
-  def change
-    remove_index :users, :email
-    change_column :users, :email, :string, unique: false
-    add_index :users, :email
+  def up
+    change_column :users, :email, :string, null: true, default: nil
+  end
+  def down
+    change_column_null :users, :email, false, SecureRandom.uuid
   end
 end
