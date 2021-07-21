@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "guides#index"
+  root to: "notifies#version"
   #devise
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks'
@@ -73,6 +73,7 @@ Rails.application.routes.draw do
   get 'notify操作說明',to: 'notifies#tutorial'
   get 'notifies/callback',to: 'notifies#callback'
   get 'notifies/version', to: 'notifies#version'
+  post 'notifies/version', to: 'notifies#version_notify', as: 'version_notify'
   #other
   get '*other',to: 'guides#other'
 end

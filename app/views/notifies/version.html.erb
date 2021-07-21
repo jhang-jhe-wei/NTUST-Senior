@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>版本通知功能</h1>
+  <h2>最新版本：</h1>
+  <%= @tag_name %>
+  <h2>版本內容：</h2>
+  <%= content_tag(:p, @content) %>
+  <%= link_to "發送版本訊息", version_notify_path, method: :post, class: "btn btn-primary text-white"%>
+</div>
