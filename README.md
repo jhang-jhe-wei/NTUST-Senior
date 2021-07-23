@@ -2,9 +2,10 @@
 ## 計畫名稱
 台科不分系學姊
 ## 官方帳號
-- line id : `@152pnuji`
+line id : [@152pnuji](https://lin.ee/230X97m)
 
-![image](https://user-images.githubusercontent.com/59594475/120091666-f3a96f00-c13f-11eb-9438-fac61450b06d.png)
+<a href="https://lin.ee/230X97m"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png" alt="加入好友" height="36" border="0"></a>
+
 ## 計畫內容
 使用line chatbot和line notify幫助新生更容易了解台科大
 ## 建置平台
