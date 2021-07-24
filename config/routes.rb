@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'liff_route', to: 'liff#route'
   #系統事件
   get "follow", to: "system_events#follow"
+  post "github/webhook", to: "system_events#github"
   #指南
   get "我想請問", to: "guides#index"
   get "新生引導", to: "guides#junior_index"
