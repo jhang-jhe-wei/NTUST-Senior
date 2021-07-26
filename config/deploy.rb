@@ -28,6 +28,8 @@ append :linked_files, "config/database.yml","config/secrets.yml",".env"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 set :passenger_restart_with_touch, true
+
+set :rvm_custom_path, '/usr/share/rvm'  # only needed if not detected
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
