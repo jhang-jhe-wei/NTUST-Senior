@@ -39,11 +39,11 @@ module ApplicationHelper
   def rich_menu
     {
     "type": "imagemap",
-    "baseUrl": "https://blog.wells.tw/NTUST-Senior/richmenu",
+    "baseUrl": "https://blog.wells.tw/NTUST-Senior/rich-menu",
     "altText": "This is an imagemap",
     "baseSize": {
         "width": 1040,
-        "height": 351
+        "height": 700
     },
     "actions": [{
             "type": "message",
@@ -51,28 +51,38 @@ module ApplicationHelper
             "area": {
                 "x": 0,
                 "y": 0,
-                "width": 346,
-                "height": 351
+                "width": 520,
+                "height": 350
             }
         },
         {
             "type": "message",
             "text": "我想請問",
             "area": {
-                "x": 346,
+                "x": 520,
                 "y": 0,
-                "width": 346,
-                "height": 351
+                "width": 520,
+                "height": 350
+            }
+        },
+        {
+            "type": "message",
+            "text": "訂閱通知",
+            "area": {
+                "x": 0,
+                "y": 350,
+                "width": 520,
+                "height": 350
             }
         },
         {
             "type": "uri",
             "linkUri": "https://liff.line.me/1656022412-QDyzYN5j/eyJwYXRoIjoiL2ZlZWRiYWNrcy9uZXciLCJsaWZmX3NpemUiOiJUQUxMIn0",
             "area": {
-                "x": 692,
-                "y": 0,
-                "width": 346,
-                "height": 351
+                "x": 520,
+                "y": 350,
+                "width": 520,
+                "height": 350
             }
         }
     ]
