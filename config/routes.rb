@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "notifies#version"
+  root to: "notifies#calendar"
   #devise
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks'
@@ -75,6 +75,8 @@ Rails.application.routes.draw do
   get 'notifies/callback',to: 'notifies#callback'
   get 'notifies/version', to: 'notifies#version'
   post 'notifies/version', to: 'notifies#version_notify', as: 'version_notify'
+  get 'notifies/calendar', to: 'notifies#calendar'
+  post 'notifies/calendar', to: 'notifies#calendar_notify', as: 'calendar_notify'
   #other
   get '*other',to: 'guides#other'
 end

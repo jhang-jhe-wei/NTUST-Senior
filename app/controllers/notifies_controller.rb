@@ -1,5 +1,6 @@
 class NotifiesController < ApplicationController
-  http_basic_authenticate_with :name => ENV["HTTP_AUTH_USERNAME"], :password => ENV["HTTP_AUTH_PASSWORD"], only: [:version, :version_notify]
+  http_basic_authenticate_with :name => ENV["HTTP_AUTH_USERNAME"], :password => ENV["HTTP_AUTH_PASSWORD"], only: [:version, :version_notify, :calendar, :calendar_notify]
+
   def index
     @auth_link = LineNotify.get_auth_link(current_user.line_id)
   end
@@ -14,9 +15,18 @@ class NotifiesController < ApplicationController
     data = release_data
     subscriptions = Subscription.where("notify_type = ?", "版本更新通知")
     subscriptions.each do |subscription|
-      LineNotify.send(subscription.user.line_notify_token, message: "\n\n版本更新通知\n\n版本號：#{data[0]["tag_name"]}\n\n#{data[0]["body"]}")
+      LineNotify.send(subscription.user.line_notify_token, message: "\n\n版本更新通知\n\n💎 最新版本號：#{data[0]['tag_name']}\n\n本次更新內容為以下：\n\n#{data[0]['body'].gsub!('#','📋').gsub!('-','📌')}")
     end
-    redirect_to version_notify_path, notice: '訊息已傳送！'
+    redirect_to version_notify_path, notice: "訊息已傳送！"
+  end
+
+  def calendar
+    @event_list = calendar_events_list["items"]
+  end
+
+  def calendar_notify
+    CalendarEventsNotify.new.perform
+    redirect_to calendar_notify_path, notice: "訊息已傳送！"
   end
 
   def callback
@@ -31,8 +41,22 @@ class NotifiesController < ApplicationController
   end
 
   private
+
   def release_data
-    response = Faraday.get('https://api.github.com/repos/jhang-jhe-wei/NTUST-Senior/releases')
-    JSON.parse response.body 
+    response = Faraday.get("https://api.github.com/repos/jhang-jhe-wei/NTUST-Senior/releases")
+    JSON.parse response.body
+  end
+
+  def calendar_events_list(duration = 7.days)
+    calendar_id = "b10730224@gapps.ntust.edu.tw"
+    url = "https://www.googleapis.com/calendar/v3/calendars/#{calendar_id}/events"
+    response = Faraday.get(url, {
+      key: ENV["GOOGLE_API_KEY"],
+      singleEvents: true,
+      order_by: "startTime",
+      time_min: DateTime.now,
+      time_max: DateTime.now + duration,
+    })
+    JSON.parse response.body
   end
 end

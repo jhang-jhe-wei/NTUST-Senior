@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>最近 7 日活動</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Summary</th>
+        <th scope="col">Start Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @event_list.try(:each) do |event| %>
+        <tr>
+          <td><%= "#{event.dig('id')[0..10]}..." %></td>
+          <td><%= event.dig('summary') %></td>
+          <td><%= event.dig('start', 'date') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "發送活動資訊", calendar_notify_path, method: :post, class: "btn btn-primary text-white"%>
+</div>
