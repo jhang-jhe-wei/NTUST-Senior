@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Places</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>店家名稱</th>
+      <th>店家地址</th>
+      <th>評分</th>
+      <th>營業時間</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @places.each do |place| %>
+      <tr>
+        <td><%= place.name %></td>
+        <td><%= place.address %></td>
+        <td><%= place.star %></td>
+        <td><ul>
+        <% place.opening_times.try(:each) do |day| %>
+          <li> <%= day.section%></li>
+        <% end%>
+         </ul></td>
+        <td><%= link_to 'Show', place %></td>
+        <td><%= link_to 'Edit', edit_place_path(place) %></td>
+        <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Place', new_place_path %>

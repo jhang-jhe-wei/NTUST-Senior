@@ -1,0 +1,21 @@
+<%= form_with(model: place) do |form| %>
+  <% if place.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+      <ul>
+        <% place.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group text-white">
+    <%= form.label :name, "店家名稱" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="text-center">
+    <%= form.submit "查詢", class: "btn btn-light text-info" %>
+  </div>
+<% end %>

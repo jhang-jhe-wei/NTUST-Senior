@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_054938) do
+ActiveRecord::Schema.define(version: 2021_08_06_020523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,31 @@ ActiveRecord::Schema.define(version: 2021_07_07_054938) do
   create_table "feedbacks", force: :cascade do |t|
     t.string "category"
     t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "google_calendars", force: :cascade do |t|
+    t.string "access_token"
+    t.string "refresh_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "opening_times", force: :cascade do |t|
+    t.bigint "place_id"
+    t.string "section"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["place_id"], name: "index_opening_times_on_place_id"
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "photo"
+    t.string "name"
+    t.string "star"
+    t.string "address"
+    t.string "google_map_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
