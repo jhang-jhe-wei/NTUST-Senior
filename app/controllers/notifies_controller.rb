@@ -6,17 +6,16 @@ class NotifiesController < ApplicationController
   end
 
   def version
-    data = release_data
+    data = GetGithubReleases.new.perform
     @tag_name = data[0]["tag_name"]
     @content = data[0]["body"]
   end
 
   def version_notify
-    data = release_data
-    subscriptions = Subscription.where("notify_type = ?", "版本更新通知")
-    subscriptions.each do |subscription|
-      LineNotify.send(subscription.user.line_notify_token, message: "\n\n版本更新通知\n\n💎 最新版本號：#{data[0]['tag_name']}\n\n本次更新內容為以下：\n\n#{data[0]['body'].gsub!('#','📋').gsub!('-','📌')}")
-    end
+    data = GetGithubReleases.new.perform
+    notify_type = "版本更新通知"
+    message = "\n\n版本更新通知\n\n💎 最新版本號：#{data[0]['tag_name']}\n\n本次更新內容為以下：\n\n#{data[0]['body'].gsub!('#','📋').gsub!('-','📌')}"
+    SubscriptionDispatch.new(notify_type, message).perform
     redirect_to version_notify_path, notice: "訊息已傳送！"
   end
 
@@ -41,11 +40,6 @@ class NotifiesController < ApplicationController
   end
 
   private
-
-  def release_data
-    response = Faraday.get("https://api.github.com/repos/jhang-jhe-wei/NTUST-Senior/releases")
-    JSON.parse response.body
-  end
 
   def calendar_events_list(duration = 7.days)
     calendar_id = "b10730224@gapps.ntust.edu.tw"

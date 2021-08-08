@@ -1,4 +1,4 @@
-<% 
+<%
 def star(num)
   baseline_box margin: :md do
     (0...num.to_i).each do
@@ -46,26 +46,8 @@ end %>
         end
       end
     end
-    bubble do
-      header margin: "none", backgroundColor: "#00CE39" do
-        vertical_box do
-          text "功能頁",gravity: "center",size: "xl",align: "center",color: "#FFFFFF"
-        end
-      end
-      body margin: "none" do
-        unless @places.first_page?
-          message_button "第一頁", "美食列表/1", style: "secondary", margin: "md"
-          message_button "上一頁", "美食列表/#{@places.prev_page}", style: "secondary", margin: "md"
-        end
-        unless @places.blank? || @places.last_page?
-        message_button "下一頁", "美食列表/#{@places.next_page}", style: "secondary", margin: "md"
-        message_button "最後一頁", "美食列表/#{@places.total_pages}", style: "secondary", margin: "md"
-        end
-        url_button "我要推薦美食", liff_path(path: new_place_path), style: "secondary", margin: "md"
-      end
-      footer do
-       text "目前在 #{@current_page}/#{@places.total_pages} 頁", align: "center"
-      end
+    pagenator("美食列表", @places) do
+      url_button "我要推薦美食", liff_path(path: new_place_path), style: "secondary", margin: "md"
     end
   end
 end)%>

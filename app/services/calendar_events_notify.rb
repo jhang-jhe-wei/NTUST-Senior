@@ -1,20 +1,16 @@
 class CalendarEventsNotify
-  def initialize
-    @message = ""
-    calendar_events_list['items'].try(:each) do |event|
-      @message += "🗓 #{event.dig('summary')}  (#{event.dig('start', 'date')})\n\n"
-    end
-  end
-
   def perform
-    subscriptions = Subscription.where("notify_type = ?", "台科大行事曆")
-    subscriptions.each do |subscription|
-      if @message.present?
-        LineNotify.send(subscription.user.line_notify_token, message: "\n\n台科大行事曆\n\n近七日台科大活動如下：\n\n#{@message}")
-      else
-        LineNotify.send(subscription.user.line_notify_token, message: "\n\n台科大行事曆\n\n近七日沒有任何活動哦！祝你一切順心！")
-      end
+    messsage = calendar_events_list['items']&.map do |event|
+      "🗓 #{event.dig('summary')}  (#{event.dig('start', 'date')})"
+    end&.join("\n\n")
+
+    if message.present?
+      message = "\n\n台科大行事曆\n\n近七日台科大活動如下：\n\n#{message}"
+    else
+      message = "\n\n台科大行事曆\n\n近七日沒有任何活動哦！祝你一切順心！"
     end
+
+    SubscriptionDispatch.new("台科大行事曆", message)
   end
 
   private

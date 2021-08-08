@@ -12,6 +12,8 @@ module NTUSTSenior
     config.load_defaults 6.1
     config.hosts << "test.wells.tw"
     config.hosts << "ntust-senior-chatbot.wells.tw"
+    config.hosts << "ngrok.etrex.tw"
+    config.hosts << "www.example.com"
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
