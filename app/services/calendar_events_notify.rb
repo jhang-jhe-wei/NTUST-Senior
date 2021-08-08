@@ -9,7 +9,7 @@ class CalendarEventsNotify
   def perform
     subscriptions = Subscription.where("notify_type = ?", "台科大行事曆")
     subscriptions.each do |subscription|
-      if @message
+      if @message.present?
         LineNotify.send(subscription.user.line_notify_token, message: "\n\n台科大行事曆\n\n近七日台科大活動如下：\n\n#{@message}")
       else
         LineNotify.send(subscription.user.line_notify_token, message: "\n\n台科大行事曆\n\n近七日沒有任何活動哦！祝你一切順心！")
