@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def pagenator(resource_name:, resources:, backgroundColor: "#00CE39")
+  def pagenator(resource_name, resources, backgroundColor: "#00CE39")
     bubble do
       header margin: "none", backgroundColor: backgroundColor do
         vertical_box do

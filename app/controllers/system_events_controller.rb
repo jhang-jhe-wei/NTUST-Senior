@@ -15,10 +15,9 @@ class SystemEventsController < ApplicationController
     private
 
     def verify_signature
-        token = "qq"
         request.body.rewind
         payload_body = request.body.read
-        signature = 'sha256=' + OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), token, payload_body)
+        signature = 'sha256=' + OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), ENV['GITHUB_WEBHOOK_SECRET'], payload_body)
         render plain: "Signatures didn't match!", status: 403 unless Rack::Utils.secure_compare(signature, request.env['HTTP_X_HUB_SIGNATURE_256'])
     end
 end
