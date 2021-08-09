@@ -10,7 +10,7 @@ class CalendarEventsNotify
       message = "\n\n台科大行事曆\n\n近七日沒有任何活動哦！祝你一切順心！"
     end
 
-    SubscriptionDispatch.new("台科大行事曆", message)
+    SubscriptionDispatch.new("台科大行事曆", message).perform
   end
 
   private
