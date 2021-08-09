@@ -47,7 +47,7 @@ end %>
       end
     end
     pagenator("美食列表", @places) do
-      url_button "我要推薦美食", liff_path(path: new_place_path), style: "secondary", margin: "md"
+      url_button "我要推薦美食", liff_path(path: new_place_path, liff_size: :full), style: "secondary", margin: "md"
     end
   end
 end)%>

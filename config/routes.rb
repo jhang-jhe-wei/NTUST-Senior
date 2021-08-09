@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   ## 美食
   resources :places
   get "美食列表(/:page)", to: "places#index"
+  get "新增美食店家/:place_id", to: "places#create_by_id"
   get "校園地圖", to: "school_facilities#school_map"
   get "提款機", to: "school_facilities#ATM"
   get "學餐位置", to: "school_facilities#school_restaurant"

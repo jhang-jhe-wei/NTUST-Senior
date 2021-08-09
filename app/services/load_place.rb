@@ -1,6 +1,10 @@
 class LoadPlace
-  def initialize(name)
-    @google_map_result = Google::Maps.place(Google::Maps.places(name).first.place_id)
+  def initialize(name: nil, place_id: nil)
+    if name
+      @google_map_result = Google::Maps.place(Google::Maps.places(name).first.place_id)
+    else
+      @google_map_result = Google::Maps.place(place_id)
+    end
   end
 
   def perform
