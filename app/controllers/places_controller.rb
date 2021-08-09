@@ -1,5 +1,7 @@
 class PlacesController < ApplicationController
-  before_action :set_feedback, only: [:destroy]
+  before_action :set_place, only: [:destroy]
+  http_basic_authenticate_with :name => ENV["HTTP_AUTH_USERNAME"], :password => ENV["HTTP_AUTH_PASSWORD"], only: [:destroy]
+
 
   def index
     @current_page = params[:page] || 1
@@ -23,7 +25,7 @@ class PlacesController < ApplicationController
     @place.destroy
     @places = Place.all
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: "Feedback was successfully destroyed." }
+      format.html { redirect_to places_url, notice: "該地點已成功被刪除！" }
       format.json { head :no_content }
       format.line { render :index }
     end
