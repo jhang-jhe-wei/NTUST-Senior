@@ -1,6 +1,6 @@
 class CalendarEventsNotify
   def perform
-    messsage = calendar_events_list['items']&.map do |event|
+    message = calendar_events_list['items']&.map do |event|
       "🗓 #{event.dig('summary')}  (#{event.dig('start', 'date')})"
     end&.join("\n\n")
 
