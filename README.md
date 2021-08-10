@@ -19,7 +19,7 @@ line id : [@152pnuji](https://lin.ee/230X97m)
 - [X] 我想請問
 - [X] 問題回報
 - [ ] 課表相關
-- [ ] 各式通知訂閱
+- [X] 各式通知訂閱
 ## 參考連結
 - [看見校園生活](http://web.ntust.edu.tw/~jerry/Portfolio/team9/indexch.html)
 - [全校不分系簡介](https://jc.ntust.edu.tw/p/412-1008-30.php?Lang=zh-tw)
