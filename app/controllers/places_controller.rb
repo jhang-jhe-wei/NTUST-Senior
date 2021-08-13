@@ -13,7 +13,8 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = LoadPlace.new(name: place_params[:name]).perform
+    params[:id]
+    @place = LoadPlace.new(place_id: params[:place_id]).perform
     if @place
       render json: { type: "text", text: "感謝你的貢獻，這下子學姊知道下一餐要吃哪了。" }
     else

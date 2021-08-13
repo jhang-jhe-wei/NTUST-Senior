@@ -1,4 +1,7 @@
 <% content_for :title, "推薦店家" %>
+<div class="alert alert-primary mb-0" role="alert">
+  This is a primary alert—check it out!
+</div>
 <div style="display: none" class="container">
       <input
         id="pac-input"
@@ -9,7 +12,7 @@
 </div>
 <div id="map"></div>
 <div id="infowindow-content">
-  <img class="w-100 ps-2 pe-2 pt-2 pb-2 d-block ms-auto me-auto" src="https://www.102like.com/manage/0/product/30802/1516761523_922.jpg" alt="" id="place-photo">
+  <img class="w-100 ps-2 pe-2 pt-2 pb-2 d-block ms-auto me-auto" src="https://www.102like.com/manage/0/product/30802/1516761523_922.jpg" alt="" id="place-photo" height="250px">
   <span id="place-name" class="title"></span><br />
   <span id="place-address"></span>
   <button class="btn btn-success d-block w-100 mt-3" id="button">推薦</button>
@@ -66,6 +69,14 @@ body {
 #map #infowindow-content {
   display: inline;
 }
+
+.alert {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  display: none;
+}
+
 </style>
 <script>
 function initMap() {
@@ -74,8 +85,11 @@ function initMap() {
     zoom: 14,
     disableDefaultUI: true
   });
+  window.map = map;
   const input = document.getElementById("pac-input");
+  window.input = input;
   const autocomplete = new google.maps.places.Autocomplete(input);
+  window.autocomplete = autocomplete;
   autocomplete.bindTo("bounds", map);
   // Specify just the place data fields that you need.
   autocomplete.setFields(["place_id", "geometry", "formatted_address", "name", "photos"]);
@@ -84,19 +98,38 @@ function initMap() {
   const infowindowContent = document.getElementById("infowindow-content");
   infowindow.setContent(infowindowContent);
   const marker = new google.maps.Marker({ map: map });
+  window.marker = marker;
   marker.addListener("click", () => {
     infowindow.open(map, marker);
   });
 
+  service = new google.maps.places.PlacesService(map);
+
+
+
   const button = document.getElementById("button");
   autocomplete.addListener("place_changed", () => {
+    console.log("place_changed")
     infowindow.close();
-    const place = autocomplete.getPlace();
+    let place = autocomplete.getPlace();
 
-    if (!place.geometry || !place.geometry.location) {
+    if(place.geometry && place.geometry.location){
+      showPlace(place);
       return;
     }
 
+    console.log(`search: ${input.value}`)
+    service.textSearch({
+      query: input.value
+    }, function(places){
+      console.log(`textSearch: ${places.length}`)
+      if(places.length > 0){
+        showPlace(places[0]);
+      }
+    });
+  });
+
+  function showPlace(place){
     if (place.geometry.viewport) {
       map.fitBounds(place.geometry.viewport);
     } else {
@@ -114,21 +147,23 @@ function initMap() {
       place.formatted_address;
     infowindowContent.children.namedItem("place-photo").setAttribute('src', place.photos[0].getUrl({'maxHeight': 250}));
     infowindow.open(map, marker);
-    button.addEventListener("click", () => {
-      liff.sendMessages([
-      {
-        type: 'text',
-        text: `新增美食店家/${place.place_id}`
-      }
-      ])  
-      .then(() => {
-        console.log('message sent');
-      })
-      .catch((err) => {
-        console.log('error', err);
+    button.addEventListener("click", async () => {
+      const response = await $.ajax({
+        url: "<%= places_path %>",
+        method: "POST",
+        data: JSON.stringify({ place_id : place.place_id }),
+        contentType: "application/json",
+        dataType: 'json'
       });
-      liff.closeWindow();
+      showAlert(response.text);
     });
-  });
+  }
+}
+
+function showAlert(text){
+  $(".alert").text(text);
+  $(".alert").show();
+
+  setTimeout(() => { $(".alert").hide();}, 1000);
 }
 </script>
