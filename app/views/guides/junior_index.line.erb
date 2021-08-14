@@ -21,24 +21,13 @@
     "我的導師是誰"
   ]
 }%>
-<%
-todos = {"新生活動": [
-    "社團博覽會",
-    "系學會活動",
-    "特定廠商活動"
-  ],
-  "聽聽學長姐怎麼說": [
-    "大學規劃",
-    "出國交換",
-    "研究所推甄"
-  ]}%>
 <%= raw(
 Kamiflex.hash(self) do
   carousel do
     menu "新生該做的事" do
       menu_text_item("設定信箱轉寄")
       menu_text_item("加入台科大相關社群")
-      menu_uri_item("加入新生Line群", "https://line.me/R/ti/g/KxcVbOiDJP")
+      menu_uri_item("加入不分系Line社群", "https://line.me/ti/g2/8lCs3zg-mRdqFQekmmb7MA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default")
       menu_text_item("填寫學籍管理系統")
     end
     vars.each do |title, ary|
