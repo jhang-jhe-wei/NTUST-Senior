@@ -30,12 +30,12 @@ end %>
             field "地點", place.address
             baseline_box spacing: :sm do
               text "時間", "color":"#aaaaaa","size":"sm","flex":1
-              text place.opening_times.try(:first).try(:section), "wrap":true,"color":"#666666","size":"sm","flex":5
+              text place.opening_times.try(:first).try(:section), "color":"#666666","size":"sm","flex":5, adjustMode: 'shrink-to-fit'
             end
             place.opening_times[1..].try(:each) do |time|
               baseline_box spacing: :sm do
                 filler
-                text time.section, "wrap":true,"color":"#666666","size":"sm","flex":5
+                text time.section,"color":"#666666","size":"sm","flex":5, adjustMode: 'shrink-to-fit'
               end
             end
           end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_06_020523) do
+ActiveRecord::Schema.define(version: 2021_08_14_060121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_08_06_020523) do
     t.index ["place_id"], name: "index_opening_times_on_place_id"
   end
 
-  create_table "places", force: :cascade do |t|
+  create_table "places", id: :serial, force: :cascade do |t|
     t.string "photo"
     t.string "name"
     t.string "star"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_08_06_020523) do
     t.string "google_map_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "place_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|

@@ -1,169 +1,183 @@
 <% content_for :title, "推薦店家" %>
-<div class="alert alert-primary mb-0" role="alert">
-  This is a primary alert—check it out!
+<div class="modal fade" id="map-notice" tabindex="-1" aria-labelledby="map-noticeLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">台科不分系學姊</h5>
+      </div>
+      <div class="modal-body">
+        <p>謝謝你的提供，學姊知道下一餐要吃哪了。你還能推薦更多美食嗎？</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-close">下次吧～掰掰！</button>
+        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal">繼續推薦</button>
+      </div>
+    </div>
+  </div>
 </div>
 <div style="display: none" class="container">
-      <input
+  <input
         id="pac-input"
         class="controls form-control"
         type="text"
         placeholder="請搜尋"
       />
-</div>
-<div id="map"></div>
-<div id="infowindow-content">
-  <img class="w-100 ps-2 pe-2 pt-2 pb-2 d-block ms-auto me-auto" src="https://www.102like.com/manage/0/product/30802/1516761523_922.jpg" alt="" id="place-photo" height="250px">
-  <span id="place-name" class="title"></span><br />
-  <span id="place-address"></span>
-  <button class="btn btn-success d-block w-100 mt-3" id="button">推薦</button>
-</div>
-<script
+  </div>
+  <div id="map"></div>
+  <div id="infowindow-content">
+    <img class="w-100 ps-2 pe-2 pt-2 pb-2 d-block ms-auto me-auto" src="https://www.102like.com/manage/0/product/30802/1516761523_922.jpg" alt="" id="place-photo" height="250px">
+    <span id="place-name" class="title"></span><br />
+    <span id="place-address"></span>
+    <button class="btn btn-success d-block w-100 mt-3" id="button">推薦</button>
+  </div>
+  <script
       src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY']%>&callback=initMap&libraries=places&v=weekly"
       async
     ></script>
-<style>
-/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-#map {
-  height: 100%;
-}
-
-/* Optional: Makes the sample page fill the window. */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.controls {
-  background-color: #fff;
-  border-radius: 2px;
-  border: 1px solid transparent;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  box-sizing: border-box;
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
-  height: 29px;
-  margin-left: 10%;
-  margin-top: 10px;
-  outline: none;
-  padding: 0 11px 0 13px;
-  text-overflow: ellipsis;
-  max-width: 80%;
-}
-
-.controls:focus {
-  border-color: #4d90fe;
-}
-
-.title {
-  font-weight: bold;
-}
-
-#infowindow-content {
-  display: none;
-}
-
-#map #infowindow-content {
-  display: inline;
-}
-
-.alert {
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-  display: none;
-}
-
-</style>
-<script>
-function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat:25.00987895, lng:121.53776285},
-    zoom: 14,
-    disableDefaultUI: true
-  });
-  window.map = map;
-  const input = document.getElementById("pac-input");
-  window.input = input;
-  const autocomplete = new google.maps.places.Autocomplete(input);
-  window.autocomplete = autocomplete;
-  autocomplete.bindTo("bounds", map);
-  // Specify just the place data fields that you need.
-  autocomplete.setFields(["place_id", "geometry", "formatted_address", "name", "photos"]);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  const infowindow = new google.maps.InfoWindow();
-  const infowindowContent = document.getElementById("infowindow-content");
-  infowindow.setContent(infowindowContent);
-  const marker = new google.maps.Marker({ map: map });
-  window.marker = marker;
-  marker.addListener("click", () => {
-    infowindow.open(map, marker);
-  });
-
-  service = new google.maps.places.PlacesService(map);
-
-
-
-  const button = document.getElementById("button");
-  autocomplete.addListener("place_changed", () => {
-    console.log("place_changed")
-    infowindow.close();
-    let place = autocomplete.getPlace();
-
-    if(place.geometry && place.geometry.location){
-      showPlace(place);
-      return;
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+           * element that contains the map. */
+    #map {
+      height: 100%;
     }
-
-    console.log(`search: ${input.value}`)
-    service.textSearch({
-      query: input.value
-    }, function(places){
-      console.log(`textSearch: ${places.length}`)
-      if(places.length > 0){
-        showPlace(places[0]);
-      }
-    });
-  });
-
-  function showPlace(place){
-    if (place.geometry.viewport) {
-      map.fitBounds(place.geometry.viewport);
-    } else {
-      map.setCenter(place.geometry.location);
-      map.setZoom(17);
+    
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
     }
-    // Set the position of the marker using the place ID and location.
-    marker.setPlace({
-      placeId: place.place_id,
-      location: place.geometry.location,
-    });
-    marker.setVisible(true);
-    infowindowContent.children.namedItem("place-name").textContent = place.name;
-    infowindowContent.children.namedItem("place-address").textContent =
-      place.formatted_address;
-    infowindowContent.children.namedItem("place-photo").setAttribute('src', place.photos[0].getUrl({'maxHeight': 250}));
-    infowindow.open(map, marker);
-    button.addEventListener("click", async () => {
-      const response = await $.ajax({
-        url: "<%= places_path %>",
-        method: "POST",
-        data: JSON.stringify({ place_id : place.place_id }),
-        contentType: "application/json",
-        dataType: 'json'
+    
+    .controls {
+      background-color: #fff;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+      font-family: Roboto;
+      font-size: 15px;
+      font-weight: 300;
+      height: 29px;
+      margin-left: 10%;
+      margin-top: 10px;
+      outline: none;
+      padding: 0 11px 0 13px;
+      text-overflow: ellipsis;
+      max-width: 80%;
+    }
+    
+    .controls:focus {
+      border-color: #4d90fe;
+    }
+    
+    .title {
+      font-weight: bold;
+    }
+    
+    #infowindow-content {
+      display: none;
+    }
+    
+    #map #infowindow-content {
+      display: inline;
+    }
+    
+    .alert {
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+      display: none;
+    }
+  </style>
+  <script>
+    function initMap() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat:25.00987895, lng:121.53776285},
+        zoom: 14,
+        disableDefaultUI: true
       });
-      showAlert(response.text);
-    });
-  }
-}
-
-function showAlert(text){
-  $(".alert").text(text);
-  $(".alert").show();
-
-  setTimeout(() => { $(".alert").hide();}, 1000);
-}
-</script>
+      window.map = map;
+      const input = document.getElementById("pac-input");
+      window.input = input;
+      const autocomplete = new google.maps.places.Autocomplete(input);
+      window.autocomplete = autocomplete;
+      autocomplete.bindTo("bounds", map);
+      // Specify just the place data fields that you need.
+      autocomplete.setFields(["place_id", "geometry", "formatted_address", "name", "photos"]);
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+      const infowindow = new google.maps.InfoWindow();
+      const infowindowContent = document.getElementById("infowindow-content");
+      infowindow.setContent(infowindowContent);
+      const marker = new google.maps.Marker({ map: map });
+      window.marker = marker;
+      marker.addListener("click", () => {
+        infowindow.open(map, marker);
+      });
+    
+      service = new google.maps.places.PlacesService(map);
+    
+    
+    
+      const button = document.getElementById("button");
+      autocomplete.addListener("place_changed", () => {
+        infowindow.close();
+        let place = autocomplete.getPlace();
+    
+        if(place.geometry && place.geometry.location){
+          showPlace(place);
+          return;
+        }
+    
+        service.textSearch({
+          query: input.value
+        }, function(places){
+          if(places.length > 0){
+            showPlace(places[0]);
+          }
+        });
+      });
+    
+      function showPlace(place){
+        input.value = place.name;
+        if (place.geometry.viewport) {
+          map.fitBounds(place.geometry.viewport);
+        } else {
+          map.setCenter(place.geometry.location);
+          map.setZoom(17);
+        }
+        // Set the position of the marker using the place ID and location.
+        marker.setPlace({
+          placeId: place.place_id,
+          location: place.geometry.location,
+        });
+        marker.setVisible(true);
+        infowindowContent.children.namedItem("place-name").textContent = place.name;
+        infowindowContent.children.namedItem("place-address").textContent =
+          place.formatted_address;
+        infowindowContent.children.namedItem("place-photo").setAttribute('src', place.photos[0].getUrl({'maxHeight': 250}));
+        infowindow.open(map, marker);
+        button.addEventListener("click", async () => {
+          const response = await $.ajax({
+            url: "<%= places_path %>",
+            method: "POST",
+            data: JSON.stringify({ place_id : place.place_id }),
+            contentType: "application/json",
+            dataType: 'json'
+          });
+          showAlert(response.text);
+        });
+      }
+    }
+    
+    function showAlert(text){
+      var myModal = new bootstrap.Modal(document.getElementById('map-notice'), {
+        keyboard: false
+      })
+      myModal.show();
+      document.getElementById('btn-close').addEventListener("click", ()=>{
+        liff.closeWindow();
+      });
+    }
+  </script>
