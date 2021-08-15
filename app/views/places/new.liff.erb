@@ -10,7 +10,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" id="btn-close">下次吧～掰掰！</button>
-        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal">繼續推薦</button>
+        <button type="button" class="btn btn-primary"  id="btn-continue">繼續推薦</button>
       </div>
     </div>
   </div>
@@ -166,18 +166,16 @@
             contentType: "application/json",
             dataType: 'json'
           });
-          showAlert(response.text);
+          $('#map-notice').modal('show');
         });
       }
     }
     
-    function showAlert(text){
-      var myModal = new bootstrap.Modal(document.getElementById('map-notice'), {
-        keyboard: false
-      })
-      myModal.show();
-      document.getElementById('btn-close').addEventListener("click", ()=>{
+    $('#btn-close')[0].addEventListener("click", ()=>{
         liff.closeWindow();
-      });
-    }
+    });
+    $('#btn-continue')[0].addEventListener("click", ()=>{
+        $('#map-notice').modal('hide');
+    });
+
   </script>
