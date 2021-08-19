@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 2021_08_19_035012) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "google_calendars", force: :cascade do |t|
+    t.string "access_token"
+    t.string "refresh_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "opening_times", force: :cascade do |t|
     t.string "section"
     t.datetime "created_at", precision: 6, null: false
@@ -67,8 +74,15 @@ ActiveRecord::Schema.define(version: 2021_08_19_035012) do
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
+  create_table "todos", force: :cascade do |t|
+    t.string "name"
+    t.string "desc"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string "email"
+    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -79,7 +93,6 @@ ActiveRecord::Schema.define(version: 2021_08_19_035012) do
     t.string "name"
     t.string "image_url"
     t.string "line_notify_token"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
