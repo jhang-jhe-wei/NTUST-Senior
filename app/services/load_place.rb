@@ -12,7 +12,7 @@ class LoadPlace
                             maxwidth: 400,
                             photoreference: @google_map_result.data.photos.first.photo_reference,
                             key: ENV["GOOGLE_API_KEY"]).headers["location"]
-    place = Place.find_or_create_by(place_id: @google_map_result.data.place_id)
+    place = Place.find_or_create_by(id: @google_map_result.data.place_id)
     opening_times = @google_map_result.data.opening_hours.weekday_text.map do |section|
       OpeningTime.create(section: section)
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_14_060121) do
+ActiveRecord::Schema.define(version: 2021_08_19_035012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,22 +42,14 @@ ActiveRecord::Schema.define(version: 2021_08_14_060121) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "google_calendars", force: :cascade do |t|
-    t.string "access_token"
-    t.string "refresh_token"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "opening_times", force: :cascade do |t|
-    t.bigint "place_id"
     t.string "section"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["place_id"], name: "index_opening_times_on_place_id"
+    t.string "place_id"
   end
 
-  create_table "places", id: :serial, force: :cascade do |t|
+  create_table "places", id: :string, force: :cascade do |t|
     t.string "photo"
     t.string "name"
     t.string "star"
@@ -65,7 +57,6 @@ ActiveRecord::Schema.define(version: 2021_08_14_060121) do
     t.string "google_map_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "place_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -76,15 +67,8 @@ ActiveRecord::Schema.define(version: 2021_08_14_060121) do
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
-  create_table "todos", force: :cascade do |t|
-    t.string "name"
-    t.string "desc"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
+    t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -95,6 +79,7 @@ ActiveRecord::Schema.define(version: 2021_08_14_060121) do
     t.string "name"
     t.string "image_url"
     t.string "line_notify_token"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
