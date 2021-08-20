@@ -27,6 +27,7 @@ line id : [@152pnuji](https://lin.ee/230X97m)
 - [台科大社團系統](http://clubs.ntust.edu.tw/Introduction/)
 - [有沒有台科新生該如何選課的八卦](https://jc.ntust.edu.tw/var/file/8/1008/img/951360335.pdf)
 - [TIPA周邊設施](http://www.ip.ntust.edu.tw/tipa/?ac1=page&id=537c13c25693e)
+- [官方帳號大頭照來源](https://news.ltn.com.tw/news/life/breakingnews/3010336)
 ## 如何貢獻
 歡迎Fork後直接發PR，或是提供新功能想法也可
 
