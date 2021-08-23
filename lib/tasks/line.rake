@@ -4,4 +4,8 @@ namespace :line do
     CalendarEventsNotify.new.perform
   end
 
+  desc "Send remind of class to notify students to take tomorrow."
+  task course_notify: :environment do
+    CourseNotify.new.perform
+  end
 end

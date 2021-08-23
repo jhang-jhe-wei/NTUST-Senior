@@ -23,3 +23,7 @@ env :PATH, ENV['PATH']
 every 1.day, at: '8:00 am' do
   rake "line:calendar_notify"
 end
+
+every 1.day, at: '22:00 am' do
+  rake "line:course_notify"
+end
