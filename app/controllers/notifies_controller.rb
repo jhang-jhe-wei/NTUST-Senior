@@ -28,6 +28,16 @@ class NotifiesController < ApplicationController
     redirect_to calendar_notify_path, notice: "訊息已傳送！"
   end
 
+  def course
+  end
+
+  def course_notify
+    user = User.find_by(line_id: params[:user_id])
+    user.update!(crosslink_url: params[:url])
+    LoadCourse.new(user).perform
+    render status: 200, json: {status: "OK"}
+  end
+
   def callback
     code = params[:code]
     current_user = User.find_by(line_id: params[:state])

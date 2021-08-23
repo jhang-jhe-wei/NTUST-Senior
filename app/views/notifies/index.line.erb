@@ -1,6 +1,10 @@
 <%= raw(Kamiflex.hash(self) do
     carousel do
         cover
+        customize_button_page("上課提醒", "訂閱後每天晚上 10 點會通知你明天要上的課程哦！由於學校禁止第三方 APP 取得學生帳密，因此與選課模擬系統 CrossLink 串接，點擊後貼上個人頁面網址，取得課程資訊") do
+            message_button "取消訂閱", "取消通知/上課提醒"
+            url_button "開始訂閱", liff_path(path: course_path), style: "primary", color: "#F3D23C"
+        end
         page("台科大行事曆", "訂閱後每天都會通知你近 7 日有關於台科大的活動哦！")
         page("版本更新通知", "訂閱後有關於版本的更新都會通知你哦！")
     end

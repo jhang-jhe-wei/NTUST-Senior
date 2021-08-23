@@ -1,0 +1,63 @@
+<% content_for :title, "設定上課提醒" %>
+<div class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">通知</h5>
+      </div>
+      <div class="modal-body text-center">
+        <h5 class="modal-title">同步中～請稍等</h5>
+        <div class="spinner-border" role="status">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt-3">
+  <h2 class="text-white text-center mt-3 mb-3">使用教學</h2>
+  <a href="https://www.crosslink.tw/"><img src="https://blog.wells.tw/NTUST-Senior/images/crosslink-profile.png" alt="" class="w-100 mt-3 mb-3"></a>
+  <input type="text" class="form-control" id="crosslink_url" placeholder="請填入 CrossLink 個人頁面的網址">
+  <div class="text-center mt-3">
+    <button class="btn btn-light text-info mb-3">同步</button>
+  </div>
+</div>
+<script>
+  var id;
+  liff.getProfile()
+  .then(profile => {
+    id = profile.userId
+  })
+  .catch((err) => {
+    console.log('error', err);
+  });
+  
+  const input = document.querySelector('#crosslink_url');
+  const button = document.querySelector('button');
+  button.addEventListener('click', ()=>{
+      console.log('click');
+      $('.modal').modal('show');
+      $.ajax({
+              url: "<%= course_notify_url %>",
+              method: "POST",
+              data: JSON.stringify({ user_id : id, url: input.value}),
+              contentType: "application/json",
+              dataType: 'json',
+              success: function(response) {
+                $('.modal-body')[0].innerHTML = '<h5>已成功同步</h5>'
+                liff.sendMessages([
+                  {
+                    type: 'text',
+                    text: '訂閱通知/上課提醒'
+                  }
+                ]);
+                setTimeout(function() {
+                  $('.modal').modal('hide');
+                  liff.closeWindow();
+                }, 1000);
+              },
+              error: function(response){
+                console.log(response);
+              }
+            });
+  })
+</script>

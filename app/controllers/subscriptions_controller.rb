@@ -40,7 +40,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def notify_present?
-    notifies = ["版本更新通知", "台科大行事曆"]
+    notifies = ["版本更新通知", "台科大行事曆", "上課提醒"]
     render json: { type: "text", text: "沒有該通知，可能已被刪除或不存在！" } if notifies.exclude? params[:notify_type]
   end
 

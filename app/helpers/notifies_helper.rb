@@ -30,4 +30,19 @@ module NotifiesHelper
             end
         end
     end
+
+    def customize_button_page(title, content)
+        bubble do
+            header backgroundColor: "#F3D23C", layout: "horizontal" do
+                text title, align: "center", color: "#ffffff", size: "xl", margin: "none", weight: "bold"
+            end
+            body do
+                text content, wrap: true
+            end
+            footer paddingTop: "0px" do
+                separator color: "#c2c2c2", margin: "xl"
+                yield
+            end
+        end
+    end
 end

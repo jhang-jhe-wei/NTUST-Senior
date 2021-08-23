@@ -79,6 +79,8 @@ Rails.application.routes.draw do
   post "notifies/version", to: "notifies#version_notify", as: "version_notify"
   get "notifies/calendar", to: "notifies#calendar"
   post "notifies/calendar", to: "notifies#calendar_notify", as: "calendar_notify"
+  get "notifies/course", to: "notifies#course", as: "course"
+  post "notifies/course", to: "notifies#course_notify", as: "course_notify"
   #other
   get "*other", to: "guides#other"
 end
