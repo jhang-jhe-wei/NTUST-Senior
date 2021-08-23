@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_19_035012) do
+ActiveRecord::Schema.define(version: 2021_08_22_112217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(version: 2021_08_19_035012) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_clubs_on_category_id"
+  end
+
+  create_table "course_times", force: :cascade do |t|
+    t.string "section"
+    t.bigint "course_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_course_times_on_course_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.string "semester"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -81,6 +97,15 @@ ActiveRecord::Schema.define(version: 2021_08_19_035012) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_and_course_records", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_user_and_course_records_on_course_id"
+    t.index ["user_id"], name: "index_user_and_course_records_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -93,9 +118,12 @@ ActiveRecord::Schema.define(version: 2021_08_19_035012) do
     t.string "name"
     t.string "image_url"
     t.string "line_notify_token"
+    t.string "crosslink_url"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "clubs", "categories"
   add_foreign_key "subscriptions", "users"
+  add_foreign_key "user_and_course_records", "courses"
+  add_foreign_key "user_and_course_records", "users"
 end

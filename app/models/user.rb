@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:line]
 
   has_many :subscriptions, dependent: :destroy
+  has_many :user_and_course_records, dependent: :destroy
+  has_many :courses, through: :user_and_course_records
 
   def self.from_omniauth(auth)
     if auth.provider == "line"
