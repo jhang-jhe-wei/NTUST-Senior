@@ -24,6 +24,6 @@ every 1.day, at: '8:00 am' do
   rake "line:calendar_notify"
 end
 
-every 1.day, at: '22:00 am' do
+every 1.day, at: '10:00 pm' do
   rake "line:course_notify"
 end
