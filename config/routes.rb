@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   get "我的導師是誰", to: "courses#search_class_teacher"
   get "選課模擬", to: "courses#course_selection_simulator"
   get "選課常見問題", to: "courses#faq"
+  #活動
+  get "校內活動", to: "activities#school_activities.list"
+  get "校外活動", to: "activities#after_school_activities.list"
   #校園設施專區
   ## 美食
   resources :places
