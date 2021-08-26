@@ -17,6 +17,9 @@
   <h2 class="text-white text-center mt-3 mb-3">使用教學</h2>
   <a href="https://www.crosslink.tw/"><img src="https://blog.wells.tw/NTUST-Senior/images/crosslink-profile.png" alt="" class="w-100 mt-3 mb-3"></a>
   <input type="text" class="form-control" id="crosslink_url" placeholder="請填入 CrossLink 個人頁面的網址">
+  <div class="invalid-feedback">
+      請輸入正確的網址。
+  </div>
   <div class="text-center mt-3">
     <button class="btn btn-light text-info mb-3">同步</button>
   </div>
@@ -35,7 +38,8 @@
   const button = document.querySelector('button');
   button.addEventListener('click', ()=>{
       console.log('click');
-      $('.modal').modal('show');
+      if(/^https:\/\/www.crosslink.tw\/users\/\d+/.test(input.value)){
+              $('.modal').modal('show');
       $.ajax({
               url: "<%= course_notify_url %>",
               method: "POST",
@@ -59,5 +63,9 @@
                 console.log(response);
               }
             });
+      }
+      else {
+        input.classList.add('is-invalid')
+      }
   })
 </script>
