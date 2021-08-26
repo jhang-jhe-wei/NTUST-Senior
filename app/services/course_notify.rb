@@ -12,7 +12,7 @@ class CourseNotify
   private
 
   def wday
-    case 3
+    case Date.tomorrow.wday
     when 0
       "sun"
     when 1
