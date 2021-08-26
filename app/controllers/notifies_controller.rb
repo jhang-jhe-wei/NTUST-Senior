@@ -35,6 +35,7 @@ class NotifiesController < ApplicationController
     user = User.find_by(line_id: params[:user_id])
     user.update!(crosslink_url: params[:url])
     LoadCourse.new(user).perform
+    user.subscriptions.find_or_create_by(notify_type: "上課提醒", user_id: user.id)
     render status: 200, json: {status: "OK"}
   end
 
