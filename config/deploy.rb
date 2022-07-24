@@ -1,6 +1,6 @@
 sh "ssh-add ~/.ssh/wells-ssh-key"
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16.0"
+lock "~> 3.17.0"
 
 set :application, "ntustsenior"
 set :repo_url, "https://github.com/jhang-jhe-wei/NTUST-Senior.git"
