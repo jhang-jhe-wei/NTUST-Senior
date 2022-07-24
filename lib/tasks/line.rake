@@ -16,4 +16,9 @@ namespace :line do
       LoadCourse.new(subscription.user).perform
     end
   end
+
+  desc "Update all courses detail in currnet semester"
+  task update_all_courses: :environment do
+    UpdateAllCourses.new.perform
+  end
 end
