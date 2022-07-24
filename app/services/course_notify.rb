@@ -16,7 +16,8 @@ class CourseNotify
   private
 
   def wday
-    case Date.tomorrow.wday
+    tomorrow = Date.today + 1.day
+    case tomorrow.wday
     when 0
       "sun"
     when 1
