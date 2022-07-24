@@ -37,4 +37,8 @@ class User < ApplicationRecord
   def password_required?
     false
   end
+
+  def has_course_times_on(wday)
+    CourseTime.where(course_id: courses.ids).send(wday.to_sym)
+  end
 end
