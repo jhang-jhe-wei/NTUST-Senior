@@ -1,8 +1,8 @@
 class LoadCourse
-  def initialize(user, semester = 1101)
+  def initialize(user, semester = nil)
     Capybara.default_max_wait_time = 1
     Capybara.default_driver = :selenium_chrome_headless
-    @semester = semester
+    @semester ||= calculate_semester(Date.today)
     @user = user
     @user.courses.clear
   end
@@ -25,6 +25,17 @@ class LoadCourse
     Capybara.current_session.driver.quit
   end
   private
+
+  def calculate_semester(date)
+    roc_year = (date - 1911.years).year
+    semester = 1
+    # 小於 6 月就算第二學期
+    if date.month < 6
+      roc_year -= 1
+      semester = 2
+    end
+    return "#{roc_year}#{semester}"
+  end
 
   def course_urls
     @b = Capybara.current_session
