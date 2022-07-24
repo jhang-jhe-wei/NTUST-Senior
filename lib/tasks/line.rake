@@ -8,4 +8,12 @@ namespace :line do
   task course_notify: :environment do
     CourseNotify.new.perform
   end
+
+  desc "Reload course for every subscriber"
+  task reload_course: :environment do
+    subscriptions = Subscription.where(notify_type: "上課提醒")
+    subscriptions.each do |subscription|
+      LoadCourse.new(subscription.user).perform
+    end
+  end
 end

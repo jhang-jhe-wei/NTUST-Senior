@@ -27,3 +27,14 @@ end
 every 1.day, at: '10:00 pm' do
   rake "line:course_notify"
 end
+
+# 每年 9 月的 5 號到 20 號每天都會重抓資料
+every '0 0 5-20 9 *' do
+  rake "line:reload_course"
+end
+
+# 每年 2 月的 10 號到 25 號每天都會重抓資料
+every '0 0 10-25 2 *' do
+  rake "line:reload_course"
+end
+
