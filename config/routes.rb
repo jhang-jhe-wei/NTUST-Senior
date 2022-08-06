@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get "雙主/輔系", to: "courses#double_major_and_minor"
   get "其他系必修", to: "courses#other_major_required_course"
   get "我的導師是誰", to: "courses#search_class_teacher"
+  get "英文會考", to: "courses#english_exam"
   get "選課模擬", to: "courses#course_selection_simulator"
   get "選課常見問題", to: "courses#faq"
   #活動
