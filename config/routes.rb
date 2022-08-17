@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "liff_entry/:base64", to: "liff#entry"
   get "liff_entry", to: "liff#entry"
   post "liff_route", to: "liff#route"
+  get "share_bot", to: "guides#share_bot"
   #系統事件
   get "follow", to: "system_events#follow"
   post "github/webhook", to: "system_events#github"

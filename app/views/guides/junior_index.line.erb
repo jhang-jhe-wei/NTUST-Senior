@@ -16,10 +16,6 @@
     "校園網路",
     "校園地圖",
     "校園運動設施"
-  ],
-  "其他問題": [
-    "我的導師是誰",
-    "英文會考"
   ]
 }%>
 <%= raw(
@@ -37,6 +33,11 @@ Kamiflex.hash(self) do
           menu_text_item(value)
         end
       end
+    end
+    menu "其他問題" do
+      menu_text_item("我的導師是誰")
+      menu_text_item("英文會考")
+      menu_uri_item("分享學姊給其他人", safe_liff_path(path: "/share_bot", liff_size: :compact))
     end
   end
 end.to_json

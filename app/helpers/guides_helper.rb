@@ -1,5 +1,7 @@
-json = Kamiflex.json(self) do
-  alt_text "台科不分系學長 向您傳送了聯絡資訊"
+module GuidesHelper
+  def ntust_senior_share_bot
+    Kamiflex.hash(self) do
+      alt_text "台科不分系學長 向您傳送了聯絡資訊"
       bubble do
         body do
           text "台科不分系學姊", wrap: true, weight: :bold
@@ -16,6 +18,11 @@ json = Kamiflex.json(self) do
           end
         end
       end
-end
+    end
+  end
 
-puts json
+  def safe_liff_path(*args, **option)
+    return liff_path(*args, **option) if ENV["LIFF_COMPACT"].present? && ENV["LIFF_TALL"].present? && ENV["LIFF_FULL"].present?
+    root_url
+  end
+end
