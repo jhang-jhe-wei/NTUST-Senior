@@ -72,3 +72,4 @@ gem 'lotify'
 gem 'whenever', require: false
 
 gem 'google-maps'
+gem "ruby-openai"
