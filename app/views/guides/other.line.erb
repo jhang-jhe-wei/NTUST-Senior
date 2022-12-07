@@ -1,1 +1,4 @@
-<%= raw([{type: "text",text: "不好意思！學姊不懂你的要求，請點擊以下按鍵向我提問吧。"},rich_menu].to_json)%>
+<%= raw({
+    type: "text",
+    text: @reply_text
+}.to_json)%>
