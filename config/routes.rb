@@ -88,5 +88,6 @@ Rails.application.routes.draw do
   post "notifies/course", to: "notifies#course_notify", as: "course_notify"
   post "notifies/email", to: "notifies#email_notify"
   #other
+  get '結束此話題', to: 'guides#reset_chatting'
   get "*other", to: "guides#other"
 end

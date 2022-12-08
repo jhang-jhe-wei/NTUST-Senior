@@ -3,6 +3,10 @@
 class GuidesController < ApplicationController
   def share_bot; end
 
+  def reset_chatting
+    Rails.cache.write("last-reponse-#{current_user.line_id}", nil)
+  end
+
   def other
     last_response = Rails.cache.read("last-reponse-#{current_user.line_id}") || ''
     response = OpenAIClient.completions(

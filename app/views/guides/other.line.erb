@@ -1,4 +1,12 @@
-<%= raw({
-    type: "text",
-    text: @reply_text
-}.to_json)%>
+<%= raw([{
+  type: "text",
+  text: @reply_text
+}, (
+  Kamiflex.hash(self) do
+    bubble size: :nano do
+      body backgroundColor: '#28A845', paddingAll: :xs do
+        text "結束此話題", action: message_action("結束此話題"), align: :center, color: '#ffffff'
+      end
+    end
+  end
+)].to_json)%>
