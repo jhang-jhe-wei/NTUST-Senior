@@ -1,0 +1,1 @@
+OpenAIClient = OpenAI::Client.new
