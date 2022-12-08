@@ -4,8 +4,7 @@ class GuidesController < ApplicationController
   def share_bot; end
 
   def other
-    client = OpenAI::Client.new
-    response = client.completions(
+    response = OpenAIClient.completions(
       parameters: {
         model: 'text-davinci-003',
         prompt: params[:other],
