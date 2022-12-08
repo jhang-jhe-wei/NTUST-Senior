@@ -8,10 +8,10 @@ class GuidesController < ApplicationController
       parameters: {
         model: 'text-davinci-003',
         prompt: params[:other],
-        max_tokens: 4000
+        max_tokens: 1000
       }
     )
 
-    @reply_text = response['choices'].map { |c| c['text'] }.join('').strip!
+    @reply_text = response['choices'].map { |c| c['text'] }.join('').strip
   end
 end
