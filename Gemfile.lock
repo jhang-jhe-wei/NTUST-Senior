@@ -125,8 +125,6 @@ GEM
     faraday-net_http (3.0.2)
     ffi (1.15.5)
     ffi (1.15.5-java)
-    ffi (1.15.5-x64-mingw32)
-    ffi (1.15.5-x86-mingw32)
     globalid (1.1.0)
       activesupport (>= 5.0)
     google-maps (3.0.7)
@@ -214,10 +212,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.2-java)
       racc (~> 1.4)
-    nokogiri (1.14.2-x64-mingw32)
-      racc (~> 1.4)
-    nokogiri (1.14.2-x86-mingw32)
-      racc (~> 1.4)
     nokogiri (1.14.2-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
@@ -238,8 +232,6 @@ GEM
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
     pg (1.4.6)
-    pg (1.4.6-x64-mingw32)
-    pg (1.4.6-x86-mingw32)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -317,8 +309,6 @@ GEM
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
-    sassc (2.4.0-x64-mingw32)
-      ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
       sassc (>= 2.0)
@@ -381,8 +371,6 @@ GEM
 PLATFORMS
   java
   ruby
-  x64-mingw32
-  x86-mingw32
   x86-mswin32
   x86_64-darwin-19
   x86_64-linux

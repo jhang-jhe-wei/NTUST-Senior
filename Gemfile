@@ -31,7 +31,7 @@ group :development, :test do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: [:mri]
   gem 'rspec-rails', '~> 5.0.0'
 end
 
@@ -52,7 +52,7 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: [:jruby, :mswin]
 
 gem "kamigo"
 
