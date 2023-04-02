@@ -183,7 +183,6 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.1)
     minitest (5.18.0)
     msgpack (1.7.0)
     multi_json (1.15.0)
@@ -201,12 +200,7 @@ GEM
       net-protocol
     net-ssh (7.1.0)
     nio4r (2.5.8)
-    nokogiri (1.14.2)
-      mini_portile2 (~> 2.8.0)
-      racc (~> 1.4)
     nokogiri (1.14.2-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -356,10 +350,7 @@ GEM
     zeitwerk (2.6.7)
 
 PLATFORMS
-  ruby
-  x86-mswin32
-  x86_64-darwin-19
-  x86_64-linux
+  x86_64-darwin-20
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
