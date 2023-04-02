@@ -1,0 +1,57 @@
+name: Reuse Test Base
+
+on:
+  workflow_call:
+    inputs:
+      ruby-version:
+        default: '2.7.2'
+        type: string
+      node-version:
+        default: '14'
+        type: string
+      command:
+        required: true
+        type: string
+
+env:
+  RAILS_ENV: test
+
+permissions:
+  contents: read
+
+jobs:
+  run-test:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ inputs.ruby-version }}
+        bundler-cache: true
+
+    - name: Set up Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'yarn'
+
+    - name: Install dependencies
+      run: |
+        bundle install
+        yarn install
+
+    - uses: nanasess/setup-chromedriver@v1
+
+    - name: Prepare
+      run: |
+        bundle exec rake db:test:prepare
+        bundle exec rake db:migrate
+
+    - name: Test
+      run: ${{ inputs.command }}
