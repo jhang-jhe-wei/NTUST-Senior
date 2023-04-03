@@ -20,7 +20,12 @@ class GuidesController < ApplicationController
       }
     )
 
-    @reply_text = response.dig("choices", 0, "message", "content")
+    @reply_text =
+      if response.success?
+        response.dig("choices", 0, "message", "content")
+      else
+        response.dig("error", "message")
+      end
     new_messages = messages.push({ role: "assistant", content: @reply_text })
     cache_conversation_records(new_messages)
   end
