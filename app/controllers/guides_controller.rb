@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class GuidesController < ApplicationController
-  after_action :cache_conversation_records, only: :other
 
   def share_bot; end
 
@@ -10,35 +9,29 @@ class GuidesController < ApplicationController
   end
 
   def other
-    append_conversation_record(params[:other])
-    response = OpenAIClient.completions(
+    previouse_records = Rails.cache.read("chatting-histories-#{current_user.line_id}") || []
+    messages = previouse_records.push({ role: "user", content: params[:other] })
+
+    response = OpenAIClient.chat(
       parameters: {
-        model: 'text-davinci-003',
-        prompt: conversation_records.join,
-        max_tokens: 1000
+        model: 'gpt-3.5-turbo',
+        prompt: messages,
+        temperature: 0.7
       }
     )
 
-    @reply_text = response['choices'].map { |c| c['text'] }.join('').strip
-    append_conversation_record(@reply_text)
+    @reply_text = response.dig("choices", 0, "message", "content")
+    new_messages = messages.push({ role: "assistant", content: @reply_text })
+    cache_conversation_records(new_messages)
   end
 
   private
 
-  def cache_conversation_records
+  def cache_conversation_records(messages)
     Rails.cache.write(
       "chatting-histories-#{current_user.line_id}",
-      conversation_records,
+      messages,
       expires_in: 30.minutes
     )
-  end
-
-  def conversation_records
-    @conversation_records ||= Rails.cache.read("chatting-histories-#{current_user.line_id}") || []
-  end
-
-  def append_conversation_record(str)
-    conversation_records.shift if conversation_records.size >= 20
-    conversation_records << str
   end
 end
