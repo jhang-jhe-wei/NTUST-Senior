@@ -15,7 +15,7 @@
 </div>
 <div class="container-fluid mt-3">
   <h2 class="text-white text-center mt-3 mb-3">使用教學</h2>
-  <a href="https://www.crosslink.tw/"><img src="https://blog.wells.tw/NTUST-Senior/images/crosslink-profile.png" alt="" class="w-100 mt-3 mb-3"></a>
+  <a href="https://www.crosslink.tw/"><img src="<%= image_url('images/crosslink-profile.png') %>" alt="" class="w-100 mt-3 mb-3"></a>
   <input type="text" class="form-control" id="crosslink_url" placeholder="請填入 CrossLink 個人頁面的網址">
   <div class="invalid-feedback">
       請輸入正確的網址。
@@ -33,7 +33,7 @@
   .catch((err) => {
     console.log('error', err);
   });
-  
+
   const input = document.querySelector('#crosslink_url');
   const button = document.querySelector('button');
   button.addEventListener('click', ()=>{

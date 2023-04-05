@@ -1,7 +1,7 @@
 <%image_urls = [
-  "https://blog.wells.tw/NTUST-Senior/images/student-state-manage1.png",
-  "https://blog.wells.tw/NTUST-Senior/images/my-teacher1.png",
-  "https://blog.wells.tw/NTUST-Senior/images/my-teacher2.png"
+  image_url('images/student-state-manage1.png'),
+  image_url('images/my-teacher1.png'),
+  image_url('images/my-teacher2.png')
 ]%>
 <%= raw([{type: "text", text: "請至台科大學生資訊系統 https://i.ntust.edu.tw/student
 依照下圖進入學籍管理系統，點擊左側的學籍資料檢視，移動滾輪到最下方。"},image_flex(image_urls)].to_json)%>

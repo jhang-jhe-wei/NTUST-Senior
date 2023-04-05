@@ -1,16 +1,16 @@
 <%image_urls = [
-  "https://blog.wells.tw/NTUST-Senior/images/101-english-exam1.png",
-  "https://blog.wells.tw/NTUST-Senior/images/101-english-exam2.png",
-  "https://blog.wells.tw/NTUST-Senior/images/101-english-exam3.png",
-  "https://blog.wells.tw/NTUST-Senior/images/101-english-exam4.png",
-  "https://blog.wells.tw/NTUST-Senior/images/101-english-exam5.png"
+  image_url('images/101-english-exam1.png'),
+  image_url('images/101-english-exam2.png'),
+  image_url('images/101-english-exam3.png'),
+  image_url('images/101-english-exam4.png'),
+  image_url('images/101-english-exam5.png')
 ]%>
 <%= raw([
   {type: "text", text: "此資訊依語言中心公告為準"},
   {
     type: "image",
-    originalContentUrl:  "https://blog.wells.tw/NTUST-Senior/images/101-english-exam-announcement.png",
-    previewImageUrl:  "https://blog.wells.tw/NTUST-Senior/images/101-english-exam-announcement.png"
+    originalContentUrl:  image_url('images/101-english-exam-announcement.png'),
+    previewImageUrl:  image_url('images/101-english-exam-announcement.png')
   },
   image_flex(image_urls)
 ].to_json)

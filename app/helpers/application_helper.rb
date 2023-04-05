@@ -64,7 +64,7 @@ module ApplicationHelper
   def rich_menu
     {
     "type": "imagemap",
-    "baseUrl": "https://blog.wells.tw/NTUST-Senior/rich-menu",
+    "baseUrl": image_url("rich-menu"),
     "altText": "This is an imagemap",
     "baseSize": {
         "width": 1040,
@@ -112,5 +112,9 @@ module ApplicationHelper
         }
     ]
 }
+  end
+
+  def image_url(image_name)
+    "https://wells.tw/NTUST-Senior/docs/#{image_name}"
   end
 end
