@@ -1,7 +1,5 @@
 class UpdateAllCourses
   def initialize(semester = nil)
-    Capybara.default_max_wait_time = 1
-    Capybara.default_driver = :selenium_chrome_headless
     @semester ||= calculate_semester(Date.today)
     @courses = Course.where(semester: @semester)
     @b = Capybara.current_session
