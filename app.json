@@ -1,0 +1,20 @@
+{
+  "cron": [
+    {
+      "command": "rake line:calendar_notify",
+      "schedule": "0 8 * * *"
+    },
+    {
+      "command": "rake line:course_notify",
+      "schedule": "0 22 * * *"
+    },
+    {
+      "command": "rake line:reload_course && rake line:update_all_courses",
+      "schedule": "0 0 5-20 9 *"
+    },
+    {
+      "command": "rake line:reload_course && rake line:update_all_courses",
+      "schedule": "0 0 10-25 2 *"
+    }
+  ]
+}
